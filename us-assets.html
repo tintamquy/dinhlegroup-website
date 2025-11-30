@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U.S. Assets - Dinh Le Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <img src="LOGO-1-1.png" alt="Dinh Le Group Logo" class="logo-image">
+                    <h1>Dinh Le Group</h1>
+                </a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="us-assets.html" class="active">U.S. Assets</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="vietnam-operations.html">Vietnam Operations</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="translate-wrap">
+                    <select id="langSelect" class="lang-select" onchange="changeLanguage(this.value)">
+                        <option value="">🌐 Language</option>
+                        <option value="en">🇺🇸 English</option>
+                        <option value="vi">🇻🇳 Tiếng Việt</option>
+                        <option value="zh-CN">🇨🇳 中文</option>
+                        <option value="ko">🇰🇷 한국어</option>
+                        <option value="ja">🇯🇵 日本語</option>
+                        <option value="th">🇹🇭 ไทย</option>
+                        <option value="fr">🇫🇷 Français</option>
+                        <option value="de">🇩🇪 Deutsch</option>
+                    </select>
+                    <div id="google_translate_element" style="display:none;"></div>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>U.S. Real Estate Portfolio</h1>
+            <p>Strategic investments across the United States</p>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section">
+        <div class="container">
+            <div class="portfolio-grid">
+                <!-- Bothell Headquarters -->
+                <div class="portfolio-item">
+                    <div class="portfolio-content">
+                        <span class="portfolio-status active">Active</span>
+                        <h3>Bothell Headquarters</h3>
+                        <p class="portfolio-location">📍 18917 99th CT NE, Unit A, Bothell, WA 98011</p>
+                        <p>Our main U.S. office and headquarters, strategically located in Bothell, Washington. This facility serves as the central hub for all our American operations, housing our administrative offices and client meeting spaces.</p>
+                        <ul class="portfolio-features">
+                            <li>Office Space</li>
+                            <li>Client Meeting Rooms</li>
+                            <li>Administrative Hub</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Renton Residence -->
+                <div class="portfolio-item">
+                    <div class="portfolio-content">
+                        <span class="portfolio-status active">Active</span>
+                        <h3>Renton Residence</h3>
+                        <p class="portfolio-location">📍 Renton, Washington</p>
+                        <p>A well-maintained residential property in Renton, Washington, providing comfortable accommodations for our team members and visiting clients. This property represents our commitment to supporting our operations with quality housing solutions.</p>
+                        <ul class="portfolio-features">
+                            <li>Residential Property</li>
+                            <li>Team Accommodations</li>
+                            <li>Guest Housing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Texas Division -->
+                <div class="portfolio-item">
+                    <div class="portfolio-content">
+                        <span class="portfolio-status planned">Planned</span>
+                        <h3>Texas Division</h3>
+                        <p class="portfolio-location">📍 Texas, USA</p>
+                        <p>Our planned expansion into Texas represents a strategic move to serve the growing market in the Lone Star State. This division will bring our expertise in real estate investment and cross-border services to Texas businesses and investors.</p>
+                        <ul class="portfolio-features">
+                            <li>Regional Office</li>
+                            <li>Investment Services</li>
+                            <li>Market Expansion</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tukwila Warehouse -->
+                <div class="portfolio-item">
+                    <div class="portfolio-content">
+                        <span class="portfolio-status planned">Planned</span>
+                        <h3>Tukwila Warehouse</h3>
+                        <p class="portfolio-location">📍 Tukwila, Washington</p>
+                        <p>A strategic warehouse facility planned for Tukwila, Washington, designed to support logistics and distribution operations. This facility will enhance our ability to serve clients with storage and distribution needs in the Pacific Northwest region.</p>
+                        <ul class="portfolio-features">
+                            <li>Warehouse Facility</li>
+                            <li>Logistics Support</li>
+                            <li>Distribution Center</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Investment Strategy -->
+    <section class="strategy-section">
+        <div class="container">
+            <h2>Our Investment Strategy</h2>
+            <div class="strategy-content">
+                <p>Dinh Le Group's U.S. real estate portfolio is carefully curated to support our business operations while providing strategic value. We focus on properties that:</p>
+                <ul class="strategy-list">
+                    <li>Support our core business operations and client services</li>
+                    <li>Offer long-term value and growth potential</li>
+                    <li>Are located in strategic markets with strong economic fundamentals</li>
+                    <li>Align with our mission of building bridges between Vietnam and the U.S.</li>
+                </ul>
+                <p>Our portfolio continues to grow as we expand our presence and services across the United States.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Dinh Le Group</h3>
+                    <p>Building bridges between Vietnam and the United States since 2001.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="us-assets.html">U.S. Assets</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>DLH R&D LLC</p>
+                    <p>18917 99th CT NE, Unit A</p>
+                    <p>Bothell, WA 98011, USA</p>
+                    <p>Phone: +1-425-496-9307</p>
+                    <p>Vietnam (Since 2001)</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Dinh Le Group. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,vi,zh-CN,ko,ja,th,fr,de',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+        
+        function changeLanguage(lang) {
+            if (!lang) return;
+            var googTransFrame = document.querySelector('.goog-te-combo');
+            if (googTransFrame) {
+                googTransFrame.value = lang;
+                googTransFrame.dispatchEvent(new Event('change'));
+            } else {
+                var domain = window.location.hostname;
+                document.cookie = "googtrans=/en/" + lang + "; path=/; domain=" + domain;
+                document.cookie = "googtrans=/en/" + lang + "; path=/";
+                window.location.reload();
+            }
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
+

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinh Le Group - Building Bridges Between Vietnam and the United States</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <img src="LOGO-1-1.png" alt="Dinh Le Group Logo" class="logo-image">
+                    <h1>Dinh Le Group</h1>
+                </a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="us-assets.html">U.S. Assets</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="vietnam-operations.html">Vietnam Operations</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <!-- Google Translate -->
+                <div class="translate-wrap">
+                    <select id="langSelect" class="lang-select" onchange="changeLanguage(this.value)">
+                        <option value="">🌐 Language</option>
+                        <option value="en">🇺🇸 English</option>
+                        <option value="vi">🇻🇳 Tiếng Việt</option>
+                        <option value="zh-CN">🇨🇳 中文</option>
+                        <option value="ko">🇰🇷 한국어</option>
+                        <option value="ja">🇯🇵 日本語</option>
+                        <option value="th">🇹🇭 ไทย</option>
+                        <option value="fr">🇫🇷 Français</option>
+                        <option value="de">🇩🇪 Deutsch</option>
+                    </select>
+                    <div id="google_translate_element" style="display:none;"></div>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-wrapper">
+                <div class="hero-content">
+                    <h1 class="hero-title">STRONG. STABLE. SAFE.</h1>
+                    <p class="hero-subtitle">Building a legal, trusted bridge between Vietnam and the United States. Connecting opportunities across borders with integrity and expertise for over two decades.</p>
+                    <a href="contact.html" class="btn btn-primary">GET STARTED</a>
+                    </div>
+                <div class="hero-globe">
+                    <svg class="globe-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <radialGradient id="oceanGrad" cx="35%" cy="35%" r="60%">
+                                <stop offset="0%" style="stop-color:#4FC3F7"/>
+                                <stop offset="50%" style="stop-color:#0288D1"/>
+                                <stop offset="100%" style="stop-color:#01579B"/>
+                            </radialGradient>
+                            <radialGradient id="shineGrad" cx="30%" cy="25%" r="50%">
+                                <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.4"/>
+                                <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0"/>
+                            </radialGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="8" result="blur"/>
+                                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                            </filter>
+                        </defs>
+                        
+                        <!-- Outer glow -->
+                        <circle cx="200" cy="200" r="165" fill="none" stroke="rgba(79,195,247,0.3)" stroke-width="2"/>
+                        <circle cx="200" cy="200" r="158" fill="none" stroke="rgba(79,195,247,0.15)" stroke-width="1"/>
+                        
+                        <!-- Ocean -->
+                        <circle cx="200" cy="200" r="150" fill="url(#oceanGrad)" filter="url(#glow)"/>
+                        
+                        <!-- North America -->
+                        <path d="M85 95 L95 85 L115 80 L140 85 L155 95 L160 110 L155 130 L145 145 L130 155 L120 165 L105 175 L95 170 L85 155 L80 135 L75 115 L80 100 Z" fill="#4CAF50"/>
+                        <path d="M120 165 L130 175 L125 190 L115 200 L100 195 L95 180 L105 175 Z" fill="#4CAF50"/>
+                        
+                        <!-- South America -->
+                        <path d="M115 215 L125 210 L140 215 L150 235 L155 260 L150 285 L140 305 L125 315 L115 310 L110 290 L105 265 L108 240 L112 225 Z" fill="#4CAF50"/>
+                        
+                        <!-- Europe -->
+                        <path d="M195 80 L210 75 L225 80 L235 90 L240 105 L235 115 L225 120 L215 125 L200 120 L190 110 L188 95 Z" fill="#4CAF50"/>
+                        
+                        <!-- Africa -->
+                        <path d="M200 135 L215 130 L235 135 L250 150 L255 175 L250 205 L240 235 L225 260 L205 270 L190 265 L180 245 L178 215 L182 185 L188 160 L195 145 Z" fill="#4CAF50"/>
+                        
+                        <!-- Asia -->
+                        <path d="M245 85 L270 80 L295 85 L320 100 L335 125 L340 155 L335 180 L320 200 L295 210 L270 205 L255 190 L250 165 L252 140 L255 115 L250 95 Z" fill="#4CAF50"/>
+                        <path d="M280 210 L295 215 L305 230 L300 250 L285 260 L270 255 L265 240 L270 225 Z" fill="#4CAF50"/>
+                        
+                        <!-- Australia -->
+                        <path d="M295 270 L320 265 L340 275 L345 295 L335 315 L315 320 L295 315 L285 300 L288 280 Z" fill="#4CAF50"/>
+                        
+                        <!-- Grid lines -->
+                        <ellipse cx="200" cy="200" rx="150" ry="60" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+                        <ellipse cx="200" cy="200" rx="150" ry="110" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+                        <ellipse cx="200" cy="200" rx="80" ry="150" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+                        <ellipse cx="200" cy="200" rx="40" ry="150" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+                        
+                        <!-- Shine effect -->
+                        <ellipse cx="145" cy="130" rx="60" ry="45" fill="url(#shineGrad)"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>EXPERIENCE</h3>
+                    <p>Over 20 years of proven expertise in real estate and investment services across Vietnam and the United States.</p>
+                    <a href="about.html" class="btn-feature">MORE →</a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>OPPORTUNITIES</h3>
+                    <p>Connecting investors and businesses with prime opportunities. From industrial real estate to cross-border investments.</p>
+                    <a href="services.html" class="btn-feature">MORE →</a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💼</div>
+                    <h3>SOLUTIONS</h3>
+                    <p>Comprehensive solutions for all your real estate needs. End-to-end services including investment guidance and legal support.</p>
+                    <a href="services.html" class="btn-feature">MORE →</a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>APPROACH</h3>
+                    <p>Client-first approach with personalized service. Building lasting relationships based on trust and excellence.</p>
+                    <a href="about.html" class="btn-feature">MORE →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News & Team Section -->
+    <section class="news-team-section">
+        <div class="container">
+            <div class="news-team-wrapper">
+                <div class="news-section">
+                    <h2>WHAT'S NEW?</h2>
+                    <div class="news-item">
+                        <div class="news-date">
+                            <span class="date-number">08</span>
+                            <span class="date-month">OCT</span>
+                </div>
+                        <div class="news-content">
+                            <p>Dinh Le Group celebrates 23 years of operations, continuing to build bridges between Vietnam and the United States with expanded services and new opportunities.</p>
+                </div>
+                </div>
+                    <div class="news-item">
+                        <div class="news-date">
+                            <span class="date-number">24</span>
+                            <span class="date-month">OCT</span>
+                </div>
+                        <div class="news-content">
+                            <p>New office expansion in Bothell, Washington strengthens our U.S. presence and enhances our ability to serve clients across both markets.</p>
+            </div>
+        </div>
+                </div>
+                <div class="team-section">
+                    <div class="team-header">
+                        <div class="team-controls">
+                            <button class="team-nav-btn">←</button>
+                            <button class="team-nav-btn">→</button>
+                        </div>
+                        <h2>PROFESSIONAL TEAM</h2>
+                    </div>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="team-avatar">DL</div>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-avatar">DL</div>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-avatar">DL</div>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-avatar">DL</div>
+                        </div>
+                    </div>
+                    <p class="team-description">Our expert team brings decades of combined experience in real estate, investment, and cross-border business operations, providing clients with professional insights and strategic guidance.</p>
+                    <a href="about.html" class="btn-feature">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Dinh Le Group</h3>
+                    <p>Building bridges between Vietnam and the United States since 2001.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="us-assets.html">U.S. Assets</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>DLH R&D LLC</p>
+                    <p>18917 99th CT NE, Unit A</p>
+                    <p>Bothell, WA 98011, USA</p>
+                    <p>Phone: +1-425-496-9307</p>
+                    <p>Vietnam (Since 2001)</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Dinh Le Group. All rights reserved. | Building Bridges Across Borders</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <!-- Google Translate -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,vi,zh-CN,ko,ja,th,fr,de',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+        
+        function changeLanguage(lang) {
+            if (!lang) return;
+            var googTransFrame = document.querySelector('.goog-te-combo');
+            if (googTransFrame) {
+                googTransFrame.value = lang;
+                googTransFrame.dispatchEvent(new Event('change'));
+            } else {
+                // Fallback: use cookie method
+                var domain = window.location.hostname;
+                document.cookie = "googtrans=/en/" + lang + "; path=/; domain=" + domain;
+                document.cookie = "googtrans=/en/" + lang + "; path=/";
+                window.location.reload();
+            }
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
+
