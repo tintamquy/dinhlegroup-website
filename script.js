@@ -34,7 +34,7 @@ const formMessage = document.getElementById('formMessage');
 // Web3Forms Configuration
 // Get your Access Key from https://web3forms.com/
 // It's FREE and gives you 250 submissions/month
-const WEB3FORMS_ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE'; // Replace with your Web3Forms Access Key
+const WEB3FORMS_ACCESS_KEY = '3836678f-b484-42ee-9517-55b7132445ae';
 
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
