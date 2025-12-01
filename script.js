@@ -106,7 +106,7 @@ if (contactForm) {
                     phone: phone,
                     message: `Subject: ${subjectText}\n\nPhone: ${phone}\n\nMessage:\n${message}`,
                     from_name: 'Dinh Le Group Website',
-                    to_email: 'info@dinhlegroup.com'
+                    to_email: 'caoquy120324@gmail.com'
                 };
 
                 // Send to Web3Forms
@@ -130,7 +130,7 @@ if (contactForm) {
             }
         } catch (error) {
             console.error('Web3Forms Error:', error);
-            showFormMessage('Sorry, there was an error sending your message. Please try again or contact us directly at info@dinhlegroup.com', 'error');
+            showFormMessage('Sorry, there was an error sending your message. Please try again or contact us directly at caoquy120324@gmail.com', 'error');
         } finally {
             // Re-enable submit button
             submitButton.disabled = false;
