@@ -27,21 +27,14 @@ if (hamburger && navMenu) {
 }
 
 
-// Contact Form Handling with EmailJS
+// Contact Form Handling with Web3Forms
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
 
-// EmailJS Configuration
-// TODO: Replace these with your actual EmailJS credentials
-// Get them from https://www.emailjs.com/
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'; // Replace with your EmailJS Service ID
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'; // Replace with your EmailJS Template ID
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; // Replace with your EmailJS Public Key
-
-// Initialize EmailJS when page loads
-if (typeof emailjs !== 'undefined') {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
-}
+// Web3Forms Configuration
+// Get your Access Key from https://web3forms.com/
+// It's FREE and gives you 250 submissions/month
+const WEB3FORMS_ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE'; // Replace with your Web3Forms Access Key
 
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
@@ -91,10 +84,8 @@ if (contactForm) {
         const subjectText = subjectMap[subject] || subject;
 
         try {
-            // Check if EmailJS is configured
-            if (EMAILJS_SERVICE_ID === 'YOUR_SERVICE_ID' || 
-                EMAILJS_TEMPLATE_ID === 'YOUR_TEMPLATE_ID' || 
-                EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+            // Check if Web3Forms is configured
+            if (WEB3FORMS_ACCESS_KEY === 'YOUR_ACCESS_KEY_HERE') {
                 // Fallback: Show success message but log data to console
                 console.log('Contact Form Submission:', {
                     name,
@@ -103,26 +94,42 @@ if (contactForm) {
                     subject: subjectText,
                     message
                 });
-                showFormMessage('Thank you for your message! We will get back to you soon. (Note: EmailJS not configured - please check SETUP_EMAILJS.md)', 'success');
+                showFormMessage('Thank you for your message! We will get back to you soon. (Note: Web3Forms not configured - please check SETUP_WEB3FORMS.md)', 'success');
                 contactForm.reset();
             } else {
-                // Send email using EmailJS
-                const templateParams = {
-                    from_name: name,
-                    from_email: email,
+                // Prepare data for Web3Forms
+                const web3formsData = {
+                    access_key: WEB3FORMS_ACCESS_KEY,
+                    subject: `New Contact Form: ${subjectText}`,
+                    name: name,
+                    email: email,
                     phone: phone,
-                    subject: subjectText,
-                    message: message,
+                    message: `Subject: ${subjectText}\n\nPhone: ${phone}\n\nMessage:\n${message}`,
+                    from_name: 'Dinh Le Group Website',
                     to_email: 'info@dinhlegroup.com'
                 };
 
-                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
-                
-                showFormMessage('Thank you for your message! We have received your inquiry and will get back to you soon.', 'success');
-                contactForm.reset();
+                // Send to Web3Forms
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(web3formsData)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showFormMessage('Thank you for your message! We have received your inquiry and will get back to you soon.', 'success');
+                    contactForm.reset();
+                } else {
+                    throw new Error(result.message || 'Failed to send message');
+                }
             }
         } catch (error) {
-            console.error('EmailJS Error:', error);
+            console.error('Web3Forms Error:', error);
             showFormMessage('Sorry, there was an error sending your message. Please try again or contact us directly at info@dinhlegroup.com', 'error');
         } finally {
             // Re-enable submit button
