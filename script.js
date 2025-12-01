@@ -27,25 +27,45 @@ if (hamburger && navMenu) {
 }
 
 
-// Contact Form Handling
+// Contact Form Handling with EmailJS
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
 
+// EmailJS Configuration
+// TODO: Replace these with your actual EmailJS credentials
+// Get them from https://www.emailjs.com/
+const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'; // Replace with your EmailJS Service ID
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'; // Replace with your EmailJS Template ID
+const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; // Replace with your EmailJS Public Key
+
+// Initialize EmailJS when page loads
+if (typeof emailjs !== 'undefined') {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+}
+
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        
+        // Disable submit button to prevent double submission
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
         
         // Get form data
         const formData = new FormData(contactForm);
         const name = formData.get('name');
         const email = formData.get('email');
-        const phone = formData.get('phone');
+        const phone = formData.get('phone') || 'Not provided';
         const subject = formData.get('subject');
         const message = formData.get('message');
 
         // Basic validation
         if (!name || !email || !subject || !message) {
             showFormMessage('Please fill in all required fields.', 'error');
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
             return;
         }
 
@@ -53,19 +73,69 @@ if (contactForm) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             showFormMessage('Please enter a valid email address.', 'error');
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
             return;
         }
 
-        // Simulate form submission (in a real application, this would send data to a server)
-        showFormMessage('Thank you for your message! We will get back to you soon.', 'success');
-        
-        // Reset form
-        contactForm.reset();
-        
-        // Hide message after 5 seconds
-        setTimeout(() => {
-            formMessage.style.display = 'none';
-        }, 5000);
+        // Map subject values to readable text
+        const subjectMap = {
+            'real-estate': 'Real Estate Investment',
+            'leasing': 'Leasing',
+            'office-setup': 'Office Setup',
+            'legal-support': 'Legal Support',
+            'consulting': 'Consulting',
+            'study-abroad': 'Study Abroad Consulting',
+            'general': 'General Inquiry'
+        };
+        const subjectText = subjectMap[subject] || subject;
+
+        try {
+            // Check if EmailJS is configured
+            if (EMAILJS_SERVICE_ID === 'YOUR_SERVICE_ID' || 
+                EMAILJS_TEMPLATE_ID === 'YOUR_TEMPLATE_ID' || 
+                EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+                // Fallback: Show success message but log data to console
+                console.log('Contact Form Submission:', {
+                    name,
+                    email,
+                    phone,
+                    subject: subjectText,
+                    message
+                });
+                showFormMessage('Thank you for your message! We will get back to you soon. (Note: EmailJS not configured - please check SETUP_EMAILJS.md)', 'success');
+                contactForm.reset();
+            } else {
+                // Send email using EmailJS
+                const templateParams = {
+                    from_name: name,
+                    from_email: email,
+                    phone: phone,
+                    subject: subjectText,
+                    message: message,
+                    to_email: 'info@dinhlegroup.com'
+                };
+
+                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+                
+                showFormMessage('Thank you for your message! We have received your inquiry and will get back to you soon.', 'success');
+                contactForm.reset();
+            }
+        } catch (error) {
+            console.error('EmailJS Error:', error);
+            showFormMessage('Sorry, there was an error sending your message. Please try again or contact us directly at info@dinhlegroup.com', 'error');
+        } finally {
+            // Re-enable submit button
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+            
+            // Hide message after 8 seconds
+            setTimeout(() => {
+                if (formMessage) {
+                    formMessage.style.display = 'none';
+                }
+            }, 8000);
+        }
     });
 }
 
