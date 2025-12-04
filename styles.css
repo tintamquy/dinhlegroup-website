@@ -955,6 +955,11 @@ body.translated-rtl h3 {
     opacity: 0;
 }
 
+.vn-factory-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
 .vn-factory-card h3 {
     font-family: 'Orbitron', 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 1.4rem;
