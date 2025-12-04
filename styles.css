@@ -1071,34 +1071,7 @@ body.translated-rtl h3 {
 
 .team-section {
     position: relative;
-}
-
-.team-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
-.team-controls {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.team-nav-btn {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background-color: #4A9EFF;
-    color: var(--white);
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.team-nav-btn:hover {
-    background-color: #0066CC;
+    margin-top: 1rem;
 }
 
 .team-section h2 {
@@ -1109,44 +1082,33 @@ body.translated-rtl h3 {
     letter-spacing: 2px;
 }
 
-.team-grid {
+.trust-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
 }
 
-.team-member {
-    text-align: center;
+.trust-card {
+    background: radial-gradient(circle at top left, rgba(0, 212, 255, 0.2) 0%, rgba(0, 0, 0, 0.6) 55%, rgba(0, 0, 0, 0.9) 100%);
+    border-radius: 16px;
+    padding: 1.25rem 1.4rem;
+    border: 1px solid rgba(0, 212, 255, 0.35);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(16px);
 }
 
-.team-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
-    color: var(--white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin: 0 auto;
-    box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
-    transition: all 0.3s ease;
+.trust-card h3 {
+    font-family: 'Orbitron', 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 1.2rem;
+    color: #00d4ff;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
 }
 
-.team-avatar:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.5);
-}
-
-.team-description {
+.trust-card p {
     color: rgba(255, 255, 255, 0.9);
-    line-height: 1.8;
     font-size: 0.95rem;
-    margin-bottom: 1.5rem;
-    text-align: left;
+    line-height: 1.7;
 }
 
 @media (max-width: 768px) {
@@ -2141,8 +2103,8 @@ body.translated-rtl h3 {
         margin: 0 auto;
     }
 
-    .team-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .trust-grid {
+        grid-template-columns: 1fr;
         gap: 1rem;
     }
 
