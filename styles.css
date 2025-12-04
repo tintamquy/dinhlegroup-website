@@ -264,14 +264,19 @@ body.translated-rtl .hero-title {
     animation: floatGlobe 6s ease-in-out infinite;
 }
 
-/* Globe 3D Container */
+/* Globe 3D Container - Technology Network Style */
 .globe-3d {
     width: 100%;
     height: 380px;
     max-width: 380px;
     position: relative;
-    filter: drop-shadow(0 0 30px rgba(0, 180, 219, 0.5)) drop-shadow(0 0 60px rgba(0, 131, 176, 0.3));
+    filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.6)) drop-shadow(0 0 60px rgba(0, 180, 219, 0.4));
     animation: floatGlobe 6s ease-in-out infinite;
+}
+
+.globe-3d canvas {
+    width: 100% !important;
+    height: 100% !important;
 }
 
 @keyframes floatGlobe {
@@ -1922,6 +1927,7 @@ body.translated-rtl h3 {
     .globe-3d {
         height: 250px;
         max-width: 250px;
+        filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5)) drop-shadow(0 0 40px rgba(0, 180, 219, 0.3));
     }
 
     .orbit {

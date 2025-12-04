@@ -348,139 +348,141 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // 3D Realistic Globe with Three.js - Enhanced
+    // 3D Technology Network Globe - Dots Connected Style
     const globeContainer = document.getElementById('globe3d');
     
-    function initThreeGlobe() {
-        if (!globeContainer || typeof THREE === 'undefined') return;
+    function initTechGlobe() {
+        if (!globeContainer || typeof THREE === 'undefined') {
+            initCanvasTechGlobe();
+            return;
+        }
         
-        const width = 380;
-        const height = 380;
+        const isMobile = window.innerWidth < 768;
+        const width = isMobile ? 250 : 380;
+        const height = isMobile ? 250 : 380;
         
         // Scene setup
         const scene = new THREE.Scene();
-        scene.background = null; // Transparent
+        scene.background = null;
         const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        const renderer = new THREE.WebGLRenderer({ 
+            alpha: true, 
+            antialias: !isMobile, // Disable antialiasing on mobile for performance
+            powerPreference: 'high-performance'
+        });
         renderer.setSize(width, height);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
         globeContainer.innerHTML = '';
         globeContainer.appendChild(renderer.domElement);
         
-        // Camera position
-        camera.position.z = 300;
+        camera.position.z = isMobile ? 250 : 300;
         
-        // Create realistic Earth with better geometry
-        const geometry = new THREE.SphereGeometry(100, 64, 64);
+        // Create network nodes (dots) on sphere surface
+        const nodes = [];
+        const nodeCount = isMobile ? 80 : 150; // Fewer nodes on mobile
+        const radius = isMobile ? 80 : 100;
         
-        // Earth texture - more realistic
-        const canvas = document.createElement('canvas');
-        canvas.width = 1024;
-        canvas.height = 512;
-        const ctx = canvas.getContext('2d');
-        
-        // Draw ocean base with realistic colors
-        const oceanGrad = ctx.createLinearGradient(0, 0, 0, 512);
-        oceanGrad.addColorStop(0, '#1a4d7a');
-        oceanGrad.addColorStop(0.3, '#2d6ba0');
-        oceanGrad.addColorStop(0.7, '#1e5a8a');
-        oceanGrad.addColorStop(1, '#153d5c');
-        ctx.fillStyle = oceanGrad;
-        ctx.fillRect(0, 0, 1024, 512);
-        
-        // Draw continents with realistic shapes and colors
-        ctx.fillStyle = '#3d6b4f'; // Dark green for continents
-        
-        // North America
-        ctx.beginPath();
-        ctx.ellipse(240, 160, 120, 80, 0, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.beginPath();
-        ctx.ellipse(200, 200, 60, 100, 0, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // South America
-        ctx.beginPath();
-        ctx.ellipse(280, 300, 70, 100, 0, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Europe
-        ctx.beginPath();
-        ctx.ellipse(500, 140, 50, 60, 0, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Africa
-        ctx.beginPath();
-        ctx.ellipse(520, 240, 60, 120, 0, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Asia
-        ctx.beginPath();
-        ctx.ellipse(700, 160, 160, 100, 0, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.beginPath();
-        ctx.ellipse(750, 280, 80, 60, 0, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Australia
-        ctx.beginPath();
-        ctx.ellipse(760, 360, 50, 40, 0, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Add subtle grid lines for tech feel
-        ctx.strokeStyle = 'rgba(79, 195, 247, 0.15)';
-        ctx.lineWidth = 0.5;
-        for (let i = 1; i < 9; i++) {
-            const y = i * 57;
-            ctx.beginPath();
-            ctx.moveTo(0, y);
-            ctx.lineTo(1024, y);
-            ctx.stroke();
-        }
-        for (let i = 1; i < 18; i++) {
-            const x = i * 57;
-            ctx.beginPath();
-            ctx.moveTo(x, 0);
-            ctx.lineTo(x, 512);
-            ctx.stroke();
+        // Generate nodes on sphere
+        for (let i = 0; i < nodeCount; i++) {
+            const theta = Math.random() * Math.PI * 2; // Longitude
+            const phi = Math.acos(2 * Math.random() - 1); // Latitude
+            
+            const x = radius * Math.sin(phi) * Math.cos(theta);
+            const y = radius * Math.sin(phi) * Math.sin(theta);
+            const z = radius * Math.cos(phi);
+            
+            nodes.push({ x, y, z, theta, phi });
         }
         
-        const texture = new THREE.CanvasTexture(canvas);
-        texture.wrapS = THREE.RepeatWrapping;
-        texture.wrapT = THREE.RepeatWrapping;
-        
-        const material = new THREE.MeshPhongMaterial({
-            map: texture,
-            shininess: 50,
-            specular: new THREE.Color(0x333333),
-            emissive: new THREE.Color(0x001122),
-            emissiveIntensity: 0.1
+        // Create node geometry and material
+        const nodeGeometry = new THREE.SphereGeometry(isMobile ? 1.5 : 2, 8, 8);
+        const nodeMaterial = new THREE.MeshBasicMaterial({
+            color: 0x00d4ff,
+            transparent: true,
+            opacity: 0.9
         });
         
-        const earth = new THREE.Mesh(geometry, material);
-        scene.add(earth);
+        const nodeMeshes = [];
+        nodes.forEach(node => {
+            const mesh = new THREE.Mesh(nodeGeometry, nodeMaterial);
+            mesh.position.set(node.x, node.y, node.z);
+            scene.add(mesh);
+            nodeMeshes.push(mesh);
+        });
         
-        // Add lighting
-        const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
-        scene.add(ambientLight);
+        // Create connections (lines between nearby nodes)
+        const lineMaterial = new THREE.LineBasicMaterial({
+            color: 0x00b4d8,
+            transparent: true,
+            opacity: 0.3
+        });
         
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.9);
-        directionalLight.position.set(200, 200, 200);
-        scene.add(directionalLight);
+        const maxDistance = isMobile ? 40 : 50;
+        nodes.forEach((node, i) => {
+            nodes.forEach((otherNode, j) => {
+                if (i < j) {
+                    const dx = node.x - otherNode.x;
+                    const dy = node.y - otherNode.y;
+                    const dz = node.z - otherNode.z;
+                    const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                    
+                    if (distance < maxDistance) {
+                        const geometry = new THREE.BufferGeometry().setFromPoints([
+                            new THREE.Vector3(node.x, node.y, node.z),
+                            new THREE.Vector3(otherNode.x, otherNode.y, otherNode.z)
+                        ]);
+                        const line = new THREE.Line(geometry, lineMaterial);
+                        scene.add(line);
+                    }
+                }
+            });
+        });
         
-        // Add point light for glow
-        const pointLight = new THREE.PointLight(0x4fc3f7, 0.4, 500);
-        pointLight.position.set(0, 0, 200);
-        scene.add(pointLight);
+        // Add outer sphere wireframe for tech feel
+        const wireframeGeometry = new THREE.SphereGeometry(radius + 2, 32, 32);
+        const wireframeMaterial = new THREE.MeshBasicMaterial({
+            color: 0x00d4ff,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.2
+        });
+        const wireframe = new THREE.Mesh(wireframeGeometry, wireframeMaterial);
+        scene.add(wireframe);
         
-        // Rotation animation
+        // Add glow effect with point lights
+        const glowColor = 0x00d4ff;
+        const pointLight1 = new THREE.PointLight(glowColor, 0.5, 300);
+        pointLight1.position.set(50, 50, 50);
+        scene.add(pointLight1);
+        
+        const pointLight2 = new THREE.PointLight(glowColor, 0.3, 300);
+        pointLight2.position.set(-50, -50, -50);
+        scene.add(pointLight2);
+        
+        // Animation
         let rotationY = 0;
+        const rotationSpeed = 0.001;
+        
         const animate = () => {
-            rotationY += 0.0015; // Very slow rotation
-            earth.rotation.y = rotationY;
+            rotationY += rotationSpeed;
+            
+            // Rotate all nodes
+            nodeMeshes.forEach((mesh, i) => {
+                const node = nodes[i];
+                const newTheta = node.theta + rotationY;
+                mesh.position.x = radius * Math.sin(node.phi) * Math.cos(newTheta);
+                mesh.position.y = radius * Math.sin(node.phi) * Math.sin(newTheta);
+                mesh.position.z = radius * Math.cos(node.phi);
+            });
+            
+            wireframe.rotation.y = rotationY;
             
             // Subtle floating
-            earth.position.y = Math.sin(Date.now() * 0.001) * 3;
+            const floatY = Math.sin(Date.now() * 0.001) * 2;
+            nodeMeshes.forEach(mesh => {
+                mesh.position.y += floatY * 0.01;
+            });
+            wireframe.position.y = floatY;
             
             renderer.render(scene, camera);
             requestAnimationFrame(animate);
@@ -489,23 +491,39 @@ document.addEventListener('DOMContentLoaded', () => {
         animate();
     }
     
-    function initCanvasGlobe() {
+    function initCanvasTechGlobe() {
         if (!globeContainer) return;
         
+        const isMobile = window.innerWidth < 768;
         const canvas = document.createElement('canvas');
         canvas.className = 'globe-canvas';
         globeContainer.innerHTML = '';
         globeContainer.appendChild(canvas);
         
         const ctx = canvas.getContext('2d');
-        const dpr = window.devicePixelRatio || 1;
-        const width = 380;
-        const height = 380;
+        const dpr = isMobile ? 1.5 : 2;
+        const width = isMobile ? 250 : 380;
+        const height = isMobile ? 250 : 380;
         canvas.width = width * dpr;
         canvas.height = height * dpr;
         canvas.style.width = width + 'px';
         canvas.style.height = height + 'px';
         ctx.scale(dpr, dpr);
+        
+        const centerX = width / 2;
+        const centerY = height / 2;
+        const radius = isMobile ? 100 : 150;
+        const nodeCount = isMobile ? 60 : 100;
+        
+        // Generate nodes
+        const nodes = [];
+        for (let i = 0; i < nodeCount; i++) {
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos(2 * Math.random() - 1);
+            const x = centerX + radius * Math.sin(phi) * Math.cos(theta);
+            const y = centerY + radius * Math.sin(phi) * Math.sin(theta);
+            nodes.push({ x, y, theta, phi });
+        }
         
         let rotation = 0;
         const rotationSpeed = 0.002;
@@ -513,92 +531,80 @@ document.addEventListener('DOMContentLoaded', () => {
         const drawGlobe = () => {
             ctx.clearRect(0, 0, width, height);
             
-            const centerX = width / 2;
-            const centerY = height / 2;
-            const radius = 150;
+            // Draw connections first
+            ctx.strokeStyle = 'rgba(0, 212, 255, 0.25)';
+            ctx.lineWidth = 0.5;
+            const maxDistance = isMobile ? 50 : 70;
             
-            // Ocean base with realistic gradient
-            const oceanGradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius);
-            oceanGradient.addColorStop(0, 'rgba(26, 77, 122, 0.8)');
-            oceanGradient.addColorStop(0.5, 'rgba(45, 107, 160, 0.9)');
-            oceanGradient.addColorStop(1, 'rgba(21, 61, 92, 0.95)');
+            nodes.forEach((node, i) => {
+                const nodeX = centerX + radius * Math.sin(node.phi) * Math.cos(node.theta + rotation);
+                const nodeY = centerY + radius * Math.sin(node.phi) * Math.sin(node.theta + rotation);
+                
+                nodes.forEach((otherNode, j) => {
+                    if (i < j) {
+                        const otherX = centerX + radius * Math.sin(otherNode.phi) * Math.cos(otherNode.theta + rotation);
+                        const otherY = centerY + radius * Math.sin(otherNode.phi) * Math.sin(otherNode.theta + rotation);
+                        
+                        const dx = nodeX - otherX;
+                        const dy = nodeY - otherY;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < maxDistance) {
+                            ctx.beginPath();
+                            ctx.moveTo(nodeX, nodeY);
+                            ctx.lineTo(otherX, otherY);
+                            ctx.stroke();
+                        }
+                    }
+                });
+            });
             
-            ctx.fillStyle = oceanGradient;
+            // Draw nodes (dots)
+            nodes.forEach(node => {
+                const nodeX = centerX + radius * Math.sin(node.phi) * Math.cos(node.theta + rotation);
+                const nodeY = centerY + radius * Math.sin(node.phi) * Math.sin(node.theta + rotation);
+                
+                // Glow effect
+                const gradient = ctx.createRadialGradient(nodeX, nodeY, 0, nodeX, nodeY, 8);
+                gradient.addColorStop(0, 'rgba(0, 212, 255, 0.8)');
+                gradient.addColorStop(0.5, 'rgba(0, 180, 219, 0.4)');
+                gradient.addColorStop(1, 'rgba(0, 180, 219, 0)');
+                
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.arc(nodeX, nodeY, 8, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Dot
+                ctx.fillStyle = '#00d4ff';
+                ctx.beginPath();
+                ctx.arc(nodeX, nodeY, isMobile ? 2 : 3, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            
+            // Outer wireframe circle
+            ctx.strokeStyle = 'rgba(0, 212, 255, 0.3)';
+            ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-            ctx.fill();
+            ctx.stroke();
             
-            // Draw continents with better shapes
-            ctx.fillStyle = 'rgba(61, 107, 79, 0.9)';
-            
-            // North America
-            const naX = centerX - 70 + Math.cos(rotation) * 25;
-            const naY = centerY - 55;
-            ctx.beginPath();
-            ctx.ellipse(naX, naY, 45, 35, rotation * 0.5, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // South America
-            const saX = centerX - 55 + Math.cos(rotation) * 18;
-            const saY = centerY + 35;
-            ctx.beginPath();
-            ctx.ellipse(saX, saY, 32, 40, rotation * 0.3, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // Europe
-            const euX = centerX + 5 + Math.cos(rotation) * 12;
-            const euY = centerY - 65;
-            ctx.beginPath();
-            ctx.ellipse(euX, euY, 25, 20, rotation * 0.4, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // Africa
-            const afX = centerX + 15 + Math.cos(rotation) * 15;
-            const afY = centerY - 5;
-            ctx.beginPath();
-            ctx.ellipse(afX, afY, 35, 50, rotation * 0.2, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // Asia
-            const asX = centerX + 75 + Math.cos(rotation) * 30;
-            const asY = centerY - 25;
-            ctx.beginPath();
-            ctx.ellipse(asX, asY, 50, 42, rotation * 0.6, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // Australia
-            const auX = centerX + 95 + Math.cos(rotation) * 25;
-            const auY = centerY + 55;
-            ctx.beginPath();
-            ctx.ellipse(auX, auY, 22, 18, rotation * 0.5, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // Tech grid lines
-            ctx.strokeStyle = 'rgba(0, 212, 255, 0.2)';
+            // Grid lines
+            ctx.strokeStyle = 'rgba(0, 212, 255, 0.15)';
             ctx.lineWidth = 0.5;
-            for (let lat = -80; lat <= 80; lat += 20) {
+            for (let lat = -80; lat <= 80; lat += 30) {
                 const y = centerY + (lat / 90) * radius;
                 ctx.beginPath();
-                ctx.ellipse(centerX, y, radius, radius * 0.35, 0, 0, Math.PI * 2);
+                ctx.ellipse(centerX, y, radius, radius * 0.4, 0, 0, Math.PI * 2);
                 ctx.stroke();
             }
             
-            for (let lon = 0; lon < 360; lon += 30) {
+            for (let lon = 0; lon < 360; lon += 45) {
                 const angle = (lon + rotation * 57.3) * Math.PI / 180;
                 ctx.beginPath();
                 ctx.ellipse(centerX, centerY, radius, radius, angle, 0, Math.PI * 2);
                 ctx.stroke();
             }
-            
-            // Outer glow
-            ctx.strokeStyle = 'rgba(0, 180, 219, 0.4)';
-            ctx.lineWidth = 2;
-            ctx.shadowBlur = 20;
-            ctx.shadowColor = 'rgba(0, 180, 219, 0.6)';
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, radius + 2, 0, Math.PI * 2);
-            ctx.stroke();
-            ctx.shadowBlur = 0;
             
             rotation += rotationSpeed;
             if (rotation > Math.PI * 2) rotation = 0;
@@ -608,24 +614,22 @@ document.addEventListener('DOMContentLoaded', () => {
         drawGlobe();
     }
     
-    // Try Three.js first, fallback to Canvas
+    // Initialize tech globe
     if (globeContainer) {
         if (typeof THREE !== 'undefined') {
-            initThreeGlobe();
+            initTechGlobe();
         } else {
-            // Wait for Three.js to load
             const checkThree = setInterval(() => {
                 if (typeof THREE !== 'undefined') {
                     clearInterval(checkThree);
-                    initThreeGlobe();
+                    initTechGlobe();
                 }
             }, 100);
             
-            // Fallback after 2 seconds
             setTimeout(() => {
                 if (typeof THREE === 'undefined') {
                     clearInterval(checkThree);
-                    initCanvasGlobe();
+                    initCanvasTechGlobe();
                 }
             }, 2000);
         }
