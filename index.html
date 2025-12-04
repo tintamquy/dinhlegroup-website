@@ -108,65 +108,12 @@
                     </div>
                 <div class="hero-globe">
                     <div class="globe-container">
-                        <svg class="globe-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <radialGradient id="oceanGrad" cx="35%" cy="35%" r="60%">
-                                <stop offset="0%" style="stop-color:#4FC3F7"/>
-                                <stop offset="50%" style="stop-color:#0288D1"/>
-                                <stop offset="100%" style="stop-color:#01579B"/>
-                            </radialGradient>
-                            <radialGradient id="shineGrad" cx="30%" cy="25%" r="50%">
-                                <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.4"/>
-                                <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0"/>
-                            </radialGradient>
-                            <filter id="glow">
-                                <feGaussianBlur stdDeviation="8" result="blur"/>
-                                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                            </filter>
-                        </defs>
-                        
-                        <!-- Outer glow -->
-                        <circle cx="200" cy="200" r="165" fill="none" stroke="rgba(79,195,247,0.3)" stroke-width="2"/>
-                        <circle cx="200" cy="200" r="158" fill="none" stroke="rgba(79,195,247,0.15)" stroke-width="1"/>
-                        
-                        <!-- Ocean -->
-                        <circle cx="200" cy="200" r="150" fill="url(#oceanGrad)" filter="url(#glow)"/>
-                        
-                        <!-- North America -->
-                        <path d="M85 95 L95 85 L115 80 L140 85 L155 95 L160 110 L155 130 L145 145 L130 155 L120 165 L105 175 L95 170 L85 155 L80 135 L75 115 L80 100 Z" fill="#4CAF50"/>
-                        <path d="M120 165 L130 175 L125 190 L115 200 L100 195 L95 180 L105 175 Z" fill="#4CAF50"/>
-                        
-                        <!-- South America -->
-                        <path d="M115 215 L125 210 L140 215 L150 235 L155 260 L150 285 L140 305 L125 315 L115 310 L110 290 L105 265 L108 240 L112 225 Z" fill="#4CAF50"/>
-                        
-                        <!-- Europe -->
-                        <path d="M195 80 L210 75 L225 80 L235 90 L240 105 L235 115 L225 120 L215 125 L200 120 L190 110 L188 95 Z" fill="#4CAF50"/>
-                        
-                        <!-- Africa -->
-                        <path d="M200 135 L215 130 L235 135 L250 150 L255 175 L250 205 L240 235 L225 260 L205 270 L190 265 L180 245 L178 215 L182 185 L188 160 L195 145 Z" fill="#4CAF50"/>
-                        
-                        <!-- Asia -->
-                        <path d="M245 85 L270 80 L295 85 L320 100 L335 125 L340 155 L335 180 L320 200 L295 210 L270 205 L255 190 L250 165 L252 140 L255 115 L250 95 Z" fill="#4CAF50"/>
-                        <path d="M280 210 L295 215 L305 230 L300 250 L285 260 L270 255 L265 240 L270 225 Z" fill="#4CAF50"/>
-                        
-                        <!-- Australia -->
-                        <path d="M295 270 L320 265 L340 275 L345 295 L335 315 L315 320 L295 315 L285 300 L288 280 Z" fill="#4CAF50"/>
-                        
-                        <!-- Grid lines -->
-                        <ellipse cx="200" cy="200" rx="150" ry="60" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
-                        <ellipse cx="200" cy="200" rx="150" ry="110" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
-                        <ellipse cx="200" cy="200" rx="80" ry="150" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
-                        <ellipse cx="200" cy="200" rx="40" ry="150" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
-                        
-                        <!-- Shine effect -->
-                        <ellipse cx="145" cy="130" rx="60" ry="45" fill="url(#shineGrad)">
-                            <animateTransform attributeName="transform" type="translate" values="145,130; 155,120; 145,130" dur="3s" repeatCount="indefinite"/>
-                        </ellipse>
-                    </svg>
-                    <div class="globe-orbits">
-                        <div class="orbit orbit-1"></div>
-                        <div class="orbit orbit-2"></div>
-                        <div class="orbit orbit-3"></div>
+                        <canvas id="globeCanvas" class="globe-canvas"></canvas>
+                        <div class="globe-orbits">
+                            <div class="orbit orbit-1"></div>
+                            <div class="orbit orbit-2"></div>
+                            <div class="orbit orbit-3"></div>
+                        </div>
                     </div>
                 </div>
             </div>

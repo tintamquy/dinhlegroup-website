@@ -188,8 +188,8 @@ window.addEventListener('scroll', () => {
     const globe = document.querySelector('.globe-container');
     if (globe) {
         const scrolled = window.pageYOffset;
-        const parallax = scrolled * 0.3;
-        globe.style.transform = `translateY(${parallax}px) rotateX(${scrolled * 0.1}deg)`;
+        const parallax = scrolled * 0.2;
+        globe.style.transform = `translateY(${parallax}px)`;
     }
     
     lastScroll = currentScroll;
@@ -347,6 +347,154 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
+
+    // 3D Technology Globe with Canvas
+    const canvas = document.getElementById('globeCanvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        const width = 380;
+        const height = 380;
+        canvas.width = width;
+        canvas.height = height;
+        
+        let rotation = 0;
+        const rotationSpeed = 0.005; // Very slow rotation
+        
+        // Earth texture data (simplified)
+        const drawGlobe = () => {
+            ctx.clearRect(0, 0, width, height);
+            
+            const centerX = width / 2;
+            const centerY = height / 2;
+            const radius = 150;
+            
+            // Draw grid lines
+            ctx.strokeStyle = 'rgba(79, 195, 247, 0.3)';
+            ctx.lineWidth = 1;
+            
+            // Latitude lines
+            for (let lat = -80; lat <= 80; lat += 20) {
+                const y = centerY + (lat / 90) * radius;
+                ctx.beginPath();
+                ctx.ellipse(centerX, y, radius, radius * 0.3, 0, 0, Math.PI * 2);
+                ctx.stroke();
+            }
+            
+            // Longitude lines
+            for (let lon = 0; lon < 360; lon += 30) {
+                const angle = (lon + rotation * 57.3) * Math.PI / 180;
+                ctx.beginPath();
+                ctx.ellipse(centerX, centerY, radius, radius, angle, 0, Math.PI * 2);
+                ctx.stroke();
+            }
+            
+            // Draw continents (simplified)
+            ctx.fillStyle = 'rgba(76, 175, 80, 0.8)';
+            
+            // North America
+            ctx.beginPath();
+            ctx.arc(centerX - 60 + Math.cos(rotation) * 20, centerY - 50, 35, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // South America
+            ctx.beginPath();
+            ctx.arc(centerX - 50 + Math.cos(rotation) * 15, centerY + 30, 25, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Europe
+            ctx.beginPath();
+            ctx.arc(centerX + 10 + Math.cos(rotation) * 10, centerY - 60, 20, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Africa
+            ctx.beginPath();
+            ctx.arc(centerX + 20 + Math.cos(rotation) * 12, centerY - 10, 30, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Asia
+            ctx.beginPath();
+            ctx.arc(centerX + 70 + Math.cos(rotation) * 25, centerY - 20, 40, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Australia
+            ctx.beginPath();
+            ctx.arc(centerX + 90 + Math.cos(rotation) * 20, centerY + 50, 18, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Ocean gradient
+            const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius);
+            gradient.addColorStop(0, 'rgba(79, 195, 247, 0.6)');
+            gradient.addColorStop(0.5, 'rgba(2, 136, 209, 0.8)');
+            gradient.addColorStop(1, 'rgba(1, 87, 155, 0.9)');
+            
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Redraw continents on top
+            ctx.fillStyle = 'rgba(76, 175, 80, 0.9)';
+            
+            // North America
+            ctx.beginPath();
+            ctx.arc(centerX - 60 + Math.cos(rotation) * 20, centerY - 50, 35, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // South America
+            ctx.beginPath();
+            ctx.arc(centerX - 50 + Math.cos(rotation) * 15, centerY + 30, 25, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Europe
+            ctx.beginPath();
+            ctx.arc(centerX + 10 + Math.cos(rotation) * 10, centerY - 60, 20, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Africa
+            ctx.beginPath();
+            ctx.arc(centerX + 20 + Math.cos(rotation) * 12, centerY - 10, 30, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Asia
+            ctx.beginPath();
+            ctx.arc(centerX + 70 + Math.cos(rotation) * 25, centerY - 20, 40, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Australia
+            ctx.beginPath();
+            ctx.arc(centerX + 90 + Math.cos(rotation) * 20, centerY + 50, 18, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Tech grid overlay
+            ctx.strokeStyle = 'rgba(0, 212, 255, 0.2)';
+            ctx.lineWidth = 0.5;
+            for (let i = 0; i < 12; i++) {
+                const angle = (i * 30 + rotation * 57.3) * Math.PI / 180;
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(
+                    centerX + Math.cos(angle) * radius,
+                    centerY + Math.sin(angle) * radius
+                );
+                ctx.stroke();
+            }
+            
+            // Glow effect
+            ctx.shadowBlur = 30;
+            ctx.shadowColor = 'rgba(0, 180, 219, 0.5)';
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+            ctx.strokeStyle = 'rgba(0, 180, 219, 0.3)';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+            
+            rotation += rotationSpeed;
+            requestAnimationFrame(drawGlobe);
+        };
+        
+        drawGlobe();
+    }
 
 });
 
