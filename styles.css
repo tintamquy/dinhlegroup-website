@@ -718,6 +718,7 @@ img {
 
 /* Parallax scroll effect for sections */
 .features-section,
+.vn-factory-section,
 .gallery-section,
 .news-team-section {
     position: relative;
@@ -816,11 +817,159 @@ body.translated-rtl h3 {
     font-family: 'Orbitron', 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
 }
 
-.feature-card p {
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.8;
+ .feature-card p {
+     color: rgba(255, 255, 255, 0.85);
+     line-height: 1.8;
+     margin-bottom: 1.5rem;
+     font-size: 0.95rem;
+ }
+
+/* Vietnam Factory for Lease Section */
+.vn-factory-section {
+    padding: 80px 20px;
+    background: radial-gradient(circle at top, rgba(0, 212, 255, 0.08) 0%, transparent 55%),
+                linear-gradient(180deg, #001428 0%, #001f3f 45%, #000c1f 100%);
+    color: var(--white);
+    position: relative;
+}
+
+.vn-factory-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 212, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 255, 0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.vn-factory-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.vn-factory-content h2 {
+    font-family: 'Orbitron', 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 2.4rem;
+    margin-bottom: 1.25rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #ffffff 0%, #00d4ff 50%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.vn-factory-lead {
+    font-size: 1.05rem;
     margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 640px;
+}
+
+.vn-factory-list {
+    list-style: none;
+    margin: 0 0 2rem;
+    padding: 0;
+}
+
+.vn-factory-list li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.vn-factory-list li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #00d4ff;
+    font-size: 1rem;
+}
+
+.vn-factory-badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 212, 255, 0.4);
+    background: radial-gradient(circle at top left, rgba(0, 212, 255, 0.3) 0%, transparent 60%),
+                rgba(0, 0, 0, 0.4);
+    margin-bottom: 1.25rem;
+}
+
+.vn-factory-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #00d4ff;
+}
+
+.vn-factory-subtag {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.vn-factory-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.vn-factory-note {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.vn-factory-link-domain {
+    color: #00d4ff;
+    font-weight: 600;
+}
+
+.vn-factory-highlights {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+
+.vn-factory-card {
+    padding: 1.5rem;
+    border-radius: 14px;
+    background: radial-gradient(circle at top, rgba(0, 212, 255, 0.2) 0%, rgba(0, 0, 0, 0.7) 60%);
+    border: 1px solid rgba(0, 212, 255, 0.35);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 212, 255, 0.18);
+    backdrop-filter: blur(14px);
+    transform: translateY(10px);
+    opacity: 0;
+}
+
+.vn-factory-card h3 {
+    font-family: 'Orbitron', 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: #00d4ff;
+    letter-spacing: 1px;
+}
+
+.vn-factory-card p {
     font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.vn-factory-card.show {
+    animation: fadeInUp 0.7s ease-out forwards;
 }
 
 /* News & Team Section */

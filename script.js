@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Observe elements for animation
-    const animateElements = document.querySelectorAll('.intro-card, .location-card, .service-card, .portfolio-item, .mission-card, .leader-card, .feature-item, .gallery-item, .feature-card');
+    const animateElements = document.querySelectorAll('.intro-card, .location-card, .service-card, .portfolio-item, .mission-card, .leader-card, .feature-item, .gallery-item, .feature-card, .vn-factory-card');
     
     animateElements.forEach(el => {
         el.style.opacity = '0';
