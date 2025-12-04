@@ -794,8 +794,18 @@ img {
 }
 
 .feature-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 212, 255, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #00d4ff;
+    margin: 0 auto 1rem;
+    background: radial-gradient(circle at top, rgba(0, 212, 255, 0.18) 0%, transparent 60%);
 }
 
 .feature-card h3 {
@@ -817,11 +827,11 @@ body.translated-rtl h3 {
     font-family: 'Orbitron', 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
 }
 
- .feature-card p {
-     color: rgba(255, 255, 255, 0.85);
-     line-height: 1.8;
-     margin-bottom: 1.5rem;
-     font-size: 0.95rem;
+.feature-card p {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
  }
 
 /* Vietnam Factory for Lease Section */
@@ -2256,6 +2266,15 @@ body.translated-rtl h3 {
 
     .navbar {
         padding: 0.75rem 0;
+    }
+
+    .vn-factory-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .vn-factory-highlights {
+        margin-top: 1rem;
     }
 
     .gallery-section {
