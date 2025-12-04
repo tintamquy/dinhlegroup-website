@@ -264,12 +264,13 @@ body.translated-rtl .hero-title {
     animation: floatGlobe 6s ease-in-out infinite;
 }
 
-/* Globe SVG */
+/* Globe SVG - Slower, more realistic rotation */
 .globe-svg {
     width: 100%;
     height: auto;
+    max-width: 380px;
     filter: drop-shadow(0 0 30px rgba(0, 180, 219, 0.5)) drop-shadow(0 0 60px rgba(0, 131, 176, 0.3));
-    animation: rotateGlobe 20s linear infinite;
+    animation: rotateGlobe 120s linear infinite; /* Very slow rotation - 2 minutes per rotation */
     transform-style: preserve-3d;
 }
 
@@ -283,7 +284,7 @@ body.translated-rtl .hero-title {
     100% { transform: rotateZ(360deg); }
 }
 
-/* Orbital rings around globe */
+/* Orbital rings around globe - Slower, more subtle */
 .globe-orbits {
     position: absolute;
     top: 50%;
@@ -298,32 +299,32 @@ body.translated-rtl .hero-title {
     position: absolute;
     top: 50%;
     left: 50%;
-    border: 2px solid rgba(79, 195, 247, 0.3);
+    border: 1.5px solid rgba(79, 195, 247, 0.25);
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    animation: orbitRotate 15s linear infinite;
+    animation: orbitRotate 40s linear infinite;
 }
 
 .orbit-1 {
-    width: 120%;
-    height: 120%;
-    border-color: rgba(79, 195, 247, 0.2);
-    animation-duration: 20s;
+    width: 115%;
+    height: 115%;
+    border-color: rgba(79, 195, 247, 0.15);
+    animation-duration: 50s;
     animation-direction: reverse;
 }
 
 .orbit-2 {
-    width: 140%;
-    height: 140%;
-    border-color: rgba(79, 195, 247, 0.15);
-    animation-duration: 25s;
+    width: 130%;
+    height: 130%;
+    border-color: rgba(79, 195, 247, 0.12);
+    animation-duration: 60s;
 }
 
 .orbit-3 {
-    width: 160%;
-    height: 160%;
-    border-color: rgba(79, 195, 247, 0.1);
-    animation-duration: 30s;
+    width: 145%;
+    height: 145%;
+    border-color: rgba(79, 195, 247, 0.08);
+    animation-duration: 70s;
     animation-direction: reverse;
 }
 
@@ -488,39 +489,30 @@ img {
     box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
 }
 
-/* Gallery Grid - Masonry Layout */
+/* Gallery Grid - Show Full Images */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
     max-width: 1400px;
     margin: 0 auto;
-    grid-auto-rows: 10px;
-}
-
-/* Optimize image sizes for better layout */
-.gallery-item:nth-child(3n+1) {
-    grid-row: span 25;
-}
-
-.gallery-item:nth-child(3n+2) {
-    grid-row: span 30;
-}
-
-.gallery-item:nth-child(3n) {
-    grid-row: span 28;
 }
 
 .gallery-item {
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     border-radius: 12px;
     cursor: pointer;
     opacity: 0;
     transform: translateY(20px) scale(0.95);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    background: var(--white);
+    background: #f8f9fa;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
 }
 
 .gallery-item::before {
@@ -560,13 +552,18 @@ img {
     width: 100%;
     height: 100%;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px;
 }
 
 .gallery-image-wrapper img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    background: #f8f9fa;
     transition: transform 0.5s ease;
 }
 
@@ -2108,8 +2105,12 @@ body.translated-rtl h3 {
     }
 
     .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .gallery-item {
+        min-height: 200px;
     }
 
     .gallery-filters {
