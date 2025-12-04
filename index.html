@@ -107,7 +107,8 @@
                     <a href="contact.html" class="btn btn-primary">GET STARTED</a>
                     </div>
                 <div class="hero-globe">
-                    <svg class="globe-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                    <div class="globe-container">
+                        <svg class="globe-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <radialGradient id="oceanGrad" cx="35%" cy="35%" r="60%">
                                 <stop offset="0%" style="stop-color:#4FC3F7"/>
@@ -158,8 +159,15 @@
                         <ellipse cx="200" cy="200" rx="40" ry="150" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
                         
                         <!-- Shine effect -->
-                        <ellipse cx="145" cy="130" rx="60" ry="45" fill="url(#shineGrad)"/>
+                        <ellipse cx="145" cy="130" rx="60" ry="45" fill="url(#shineGrad)">
+                            <animateTransform attributeName="transform" type="translate" values="145,130; 155,120; 145,130" dur="3s" repeatCount="indefinite"/>
+                        </ellipse>
                     </svg>
+                    <div class="globe-orbits">
+                        <div class="orbit orbit-1"></div>
+                        <div class="orbit orbit-2"></div>
+                        <div class="orbit orbit-3"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -196,6 +204,222 @@
             </div>
         </div>
     </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>OUR OFFICE & PARTNERSHIPS</h2>
+                <p>Explore our professional workspace and successful collaborations</p>
+            </div>
+            
+            <!-- Gallery Filter Tabs -->
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="office">Office</button>
+                <button class="filter-btn" data-filter="partners">Partners</button>
+                <button class="filter-btn" data-filter="certificates">Certificates</button>
+                <button class="filter-btn" data-filter="events">Events</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Office Images -->
+                <div class="gallery-item" data-category="office">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/bàn làm việc văn phòng.jpg" alt="Office Desk" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="office">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/bên ngoài văn phòng ban ngày.jpg" alt="Office Exterior Day" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="office">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/bên ngoài văn phòng buổi tối.jpg" alt="Office Exterior Night" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="office">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/cầu thang.jpg" alt="Staircase" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="office">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/cửa văn phòng buổi tối.jpg" alt="Office Door Night" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="office">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/một góc văn phòng.jpg" alt="Office Corner" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="office">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/nội thất văn phòng .jpg" alt="Office Interior" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="office">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/nội thất văn phòng.jpg" alt="Office Interior 2" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Partner Images -->
+                <div class="gallery-item" data-category="partners">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/đối tác khách hàng.jpg" alt="Client Partners" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="partners">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/đối tác khách hàng 2.jpg" alt="Client Partners 2" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="partners">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/đối tác khách hàng 3.jpg" alt="Client Partners 3" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="partners">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/đối tác với trường harvard.jpg" alt="Partnership with Harvard" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="partners">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/Hợp tác với đại học Harvard.jpg" alt="Cooperation with Harvard University" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="partners">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/khách hàng nhật bản tặng quà.jpg" alt="Japanese Client Giving Gift" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="partners">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/kỷ niệm hợp tác khác hàng.jpg" alt="Commemorating Client Partnership" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certificate Images -->
+                <div class="gallery-item" data-category="certificates">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/certificate of formation.jpg" alt="Certificate of Formation" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="certificates">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/nhà nước việt nam trao bằng công nhận.jpg" alt="Vietnamese State Awarding Certificate" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Images -->
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/ký kết hợp đồng với khác hàng.jpg" alt="Contract Signing with Client" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/Ký kết hợp tác với khách hàng.jpg" alt="Cooperation Signing with Client" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/ký kết với trường đại học ở việt nam.jpg" alt="Signing with University in Vietnam" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/office with man sign contract.jpg" alt="Office with Man Signing Contract" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-image-wrapper">
+                        <img src="ảnh website mỹ/tham dự hội thảo các doanh nghiệp.jpg" alt="Attending Business Seminar" loading="lazy">
+                        <div class="gallery-overlay">
+                            <span class="gallery-icon">🔍</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <button class="lightbox-prev" id="lightboxPrev">&#8249;</button>
+        <button class="lightbox-next" id="lightboxNext">&#8250;</button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightboxImage">
+        </div>
+    </div>
 
     <!-- News & Team Section -->
     <section class="news-team-section">
