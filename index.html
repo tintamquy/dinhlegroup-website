@@ -55,6 +55,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <!-- Three.js for 3D Globe -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -108,7 +110,7 @@
                     </div>
                 <div class="hero-globe">
                     <div class="globe-container">
-                        <canvas id="globeCanvas" class="globe-canvas"></canvas>
+                        <div id="globe3d" class="globe-3d"></div>
                         <div class="globe-orbits">
                             <div class="orbit orbit-1"></div>
                             <div class="orbit orbit-2"></div>

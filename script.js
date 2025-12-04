@@ -348,141 +348,139 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // 3D Technology Globe with Canvas - Enhanced Version
-    const canvas = document.getElementById('globeCanvas');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        const dpr = window.devicePixelRatio || 1;
+    // 3D Realistic Globe with Three.js
+    const globeContainer = document.getElementById('globe3d');
+    if (globeContainer && typeof THREE !== 'undefined') {
         const width = 380;
         const height = 380;
-        canvas.width = width * dpr;
-        canvas.height = height * dpr;
-        canvas.style.width = width + 'px';
-        canvas.style.height = height + 'px';
-        ctx.scale(dpr, dpr);
         
-        let rotation = 0;
-        const rotationSpeed = 0.003; // Very slow, smooth rotation
+        // Scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(width, height);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        globeContainer.appendChild(renderer.domElement);
         
-        const drawGlobe = () => {
-            ctx.clearRect(0, 0, width, height);
-            
-            const centerX = width / 2;
-            const centerY = height / 2;
-            const radius = 150;
-            
-            // Ocean base with gradient
-            const oceanGradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius);
-            oceanGradient.addColorStop(0, 'rgba(79, 195, 247, 0.7)');
-            oceanGradient.addColorStop(0.6, 'rgba(2, 136, 209, 0.85)');
-            oceanGradient.addColorStop(1, 'rgba(1, 87, 155, 0.95)');
-            
-            ctx.fillStyle = oceanGradient;
+        // Camera position
+        camera.position.z = 300;
+        
+        // Create realistic Earth
+        const geometry = new THREE.SphereGeometry(100, 64, 64);
+        
+        // Earth texture - using gradient and patterns
+        const canvas = document.createElement('canvas');
+        canvas.width = 512;
+        canvas.height = 256;
+        const ctx = canvas.getContext('2d');
+        
+        // Draw ocean base
+        const oceanGrad = ctx.createLinearGradient(0, 0, 0, 256);
+        oceanGrad.addColorStop(0, '#1e3a5f');
+        oceanGrad.addColorStop(0.5, '#2d5aa0');
+        oceanGrad.addColorStop(1, '#1e3a5f');
+        ctx.fillStyle = oceanGrad;
+        ctx.fillRect(0, 0, 512, 256);
+        
+        // Draw continents (simplified but realistic)
+        ctx.fillStyle = '#4a7c59';
+        
+        // North America
+        ctx.beginPath();
+        ctx.ellipse(120, 80, 60, 40, 0, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // South America
+        ctx.beginPath();
+        ctx.ellipse(140, 150, 35, 50, 0, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Europe
+        ctx.beginPath();
+        ctx.ellipse(250, 70, 25, 30, 0, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Africa
+        ctx.beginPath();
+        ctx.ellipse(260, 120, 30, 60, 0, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Asia
+        ctx.beginPath();
+        ctx.ellipse(350, 80, 80, 50, 0, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Australia
+        ctx.beginPath();
+        ctx.ellipse(380, 180, 25, 20, 0, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Add grid lines
+        ctx.strokeStyle = 'rgba(79, 195, 247, 0.3)';
+        ctx.lineWidth = 1;
+        for (let i = 0; i < 9; i++) {
+            const y = (i + 1) * 28;
             ctx.beginPath();
-            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // Tech grid lines - Latitude
-            ctx.strokeStyle = 'rgba(0, 212, 255, 0.25)';
-            ctx.lineWidth = 1;
-            for (let lat = -80; lat <= 80; lat += 20) {
-                const y = centerY + (lat / 90) * radius;
-                ctx.beginPath();
-                ctx.ellipse(centerX, y, radius, radius * 0.35, 0, 0, Math.PI * 2);
-                ctx.stroke();
-            }
-            
-            // Tech grid lines - Longitude (rotating)
-            ctx.strokeStyle = 'rgba(0, 212, 255, 0.3)';
-            for (let lon = 0; lon < 360; lon += 30) {
-                const angle = (lon + rotation * 57.3) * Math.PI / 180;
-                ctx.beginPath();
-                ctx.ellipse(centerX, centerY, radius, radius, angle, 0, Math.PI * 2);
-                ctx.stroke();
-            }
-            
-            // Tech radial lines
-            ctx.strokeStyle = 'rgba(0, 180, 219, 0.15)';
-            ctx.lineWidth = 0.5;
-            for (let i = 0; i < 12; i++) {
-                const angle = (i * 30 + rotation * 57.3) * Math.PI / 180;
-                ctx.beginPath();
-                ctx.moveTo(centerX, centerY);
-                ctx.lineTo(
-                    centerX + Math.cos(angle) * radius,
-                    centerY + Math.sin(angle) * radius
-                );
-                ctx.stroke();
-            }
-            
-            // Draw continents with better positioning
-            ctx.fillStyle = 'rgba(76, 175, 80, 0.85)';
-            
-            // North America (more realistic shape)
-            const naX = centerX - 70 + Math.cos(rotation) * 25;
-            const naY = centerY - 55;
-            ctx.beginPath();
-            ctx.ellipse(naX, naY, 40, 30, rotation * 0.5, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // South America
-            const saX = centerX - 55 + Math.cos(rotation) * 18;
-            const saY = centerY + 35;
-            ctx.beginPath();
-            ctx.ellipse(saX, saY, 28, 35, rotation * 0.3, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // Europe
-            const euX = centerX + 5 + Math.cos(rotation) * 12;
-            const euY = centerY - 65;
-            ctx.beginPath();
-            ctx.ellipse(euX, euY, 22, 18, rotation * 0.4, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // Africa
-            const afX = centerX + 15 + Math.cos(rotation) * 15;
-            const afY = centerY - 5;
-            ctx.beginPath();
-            ctx.ellipse(afX, afY, 32, 45, rotation * 0.2, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // Asia
-            const asX = centerX + 75 + Math.cos(rotation) * 30;
-            const asY = centerY - 25;
-            ctx.beginPath();
-            ctx.ellipse(asX, asY, 45, 38, rotation * 0.6, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // Australia
-            const auX = centerX + 95 + Math.cos(rotation) * 25;
-            const auY = centerY + 55;
-            ctx.beginPath();
-            ctx.ellipse(auX, auY, 20, 15, rotation * 0.5, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // Outer glow ring
-            ctx.strokeStyle = 'rgba(0, 180, 219, 0.4)';
-            ctx.lineWidth = 2;
-            ctx.shadowBlur = 20;
-            ctx.shadowColor = 'rgba(0, 180, 219, 0.6)';
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, radius + 2, 0, Math.PI * 2);
+            ctx.moveTo(0, y);
+            ctx.lineTo(512, y);
             ctx.stroke();
-            ctx.shadowBlur = 0;
-            
-            // Inner highlight
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-            ctx.lineWidth = 1;
+        }
+        for (let i = 0; i < 18; i++) {
+            const x = (i + 1) * 28;
             ctx.beginPath();
-            ctx.arc(centerX, centerY, radius - 5, 0, Math.PI * 2);
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, 256);
             ctx.stroke();
+        }
+        
+        const texture = new THREE.CanvasTexture(canvas);
+        texture.wrapS = THREE.RepeatWrapping;
+        texture.wrapT = THREE.RepeatWrapping;
+        
+        const material = new THREE.MeshPhongMaterial({
+            map: texture,
+            shininess: 30,
+            specular: new THREE.Color(0x222222)
+        });
+        
+        const earth = new THREE.Mesh(geometry, material);
+        scene.add(earth);
+        
+        // Add lighting
+        const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+        scene.add(ambientLight);
+        
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight.position.set(200, 200, 200);
+        scene.add(directionalLight);
+        
+        // Add point light for glow
+        const pointLight = new THREE.PointLight(0x4fc3f7, 0.5, 500);
+        pointLight.position.set(0, 0, 200);
+        scene.add(pointLight);
+        
+        // Rotation animation
+        let rotationY = 0;
+        const animate = () => {
+            rotationY += 0.002; // Very slow rotation
+            earth.rotation.y = rotationY;
             
-            rotation += rotationSpeed;
-            if (rotation > Math.PI * 2) rotation = 0;
-            requestAnimationFrame(drawGlobe);
+            // Subtle floating
+            earth.position.y = Math.sin(Date.now() * 0.001) * 5;
+            
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
         };
         
-        drawGlobe();
+        animate();
+    } else if (globeContainer) {
+        // Fallback: Simple CSS globe if Three.js not loaded
+        globeContainer.innerHTML = '<div class="globe-fallback">🌍</div>';
+        globeContainer.style.fontSize = '200px';
+        globeContainer.style.display = 'flex';
+        globeContainer.style.alignItems = 'center';
+        globeContainer.style.justifyContent = 'center';
+        globeContainer.style.animation = 'floatGlobe 6s ease-in-out infinite, rotateGlobe 120s linear infinite';
     }
 
 });

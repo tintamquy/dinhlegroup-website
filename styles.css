@@ -264,12 +264,12 @@ body.translated-rtl .hero-title {
     animation: floatGlobe 6s ease-in-out infinite;
 }
 
-/* Globe Canvas - 3D Technology Globe */
-.globe-canvas {
+/* Globe 3D Container */
+.globe-3d {
     width: 100%;
-    height: auto;
+    height: 380px;
     max-width: 380px;
-    max-height: 380px;
+    position: relative;
     filter: drop-shadow(0 0 30px rgba(0, 180, 219, 0.5)) drop-shadow(0 0 60px rgba(0, 131, 176, 0.3));
     animation: floatGlobe 6s ease-in-out infinite;
 }
@@ -489,13 +489,18 @@ img {
     box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
 }
 
-/* Gallery Grid - Show Full Images */
+/* Gallery Grid - Pinterest Style Masonry */
 .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
+    column-count: 4;
+    column-gap: 1.5rem;
     max-width: 1400px;
     margin: 0 auto;
+}
+
+.gallery-item {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+    page-break-inside: avoid;
 }
 
 .gallery-item {
@@ -507,12 +512,10 @@ img {
     transform: translateY(20px) scale(0.95);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    background: #f8f9fa;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    height: auto; /* Tự động điều chỉnh theo ảnh */
+    background: #ffffff;
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 .gallery-item::before {
@@ -551,20 +554,18 @@ img {
 .gallery-image-wrapper {
     width: 100%;
     position: relative;
-    overflow: visible;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #f8f9fa;
 }
 
 .gallery-image-wrapper img {
     width: 100%;
-    height: auto; /* Tự động điều chỉnh chiều cao theo tỷ lệ */
-    max-height: 600px; /* Giới hạn tối đa để không quá lớn */
-    object-fit: contain;
-    background: #f8f9fa;
-    transition: transform 0.5s ease;
+    height: auto;
     display: block;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    border-radius: 12px;
 }
 
 .gallery-item:hover .gallery-image-wrapper img {
@@ -1918,8 +1919,9 @@ body.translated-rtl h3 {
         margin: 0 auto;
     }
 
-    .globe-svg {
-        max-width: 100%;
+    .globe-3d {
+        height: 250px;
+        max-width: 250px;
     }
 
     .orbit {
@@ -2105,12 +2107,19 @@ body.translated-rtl h3 {
     }
 
     .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 1.5rem;
+        column-count: 2;
+        column-gap: 1rem;
     }
 
     .gallery-item {
-        /* Chiều cao tự động theo ảnh */
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        column-count: 1;
+        column-gap: 1rem;
     }
 
     .gallery-filters {
