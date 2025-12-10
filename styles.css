@@ -1182,19 +1182,38 @@ body.translated-rtl h3 {
 }
 
 .expert-card {
-    background: radial-gradient(circle at top, rgba(0, 212, 255, 0.15) 0%, rgba(0, 0, 0, 0.6) 60%);
-    border: 1px solid rgba(0, 212, 255, 0.3);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 248, 255, 0.98) 100%);
+    border: 2px solid rgba(0, 102, 204, 0.2);
     border-radius: 16px;
-    padding: 1.5rem;
+    padding: 2rem;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 212, 255, 0.15);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 25px rgba(0, 51, 102, 0.15), 0 0 0 0 rgba(0, 102, 204, 0);
+    position: relative;
+    overflow: hidden;
+}
+
+.expert-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0066CC 0%, #00d4ff 50%, #0066CC 100%);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.expert-card:hover::before {
+    transform: scaleX(1);
 }
 
 .expert-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 212, 255, 0.25);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 51, 102, 0.25), 0 0 40px rgba(0, 102, 204, 0.2);
+    border-color: rgba(0, 102, 204, 0.5);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(240, 248, 255, 1) 100%);
 }
 
 .expert-image-wrapper {
@@ -1236,12 +1255,18 @@ body.translated-rtl h3 {
 
 .expert-info h3 {
     font-family: 'Orbitron', 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Arial', 'Noto Sans', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans SC', 'Noto Sans TC', sans-serif;
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    color: #ffffff;
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: #003366;
     letter-spacing: 1px;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: none;
+    position: relative;
+}
+
+/* Override for dark sections */
+.expert-team-section .expert-info h3 {
+    color: #ffffff;
 }
 
 .expert-title {
@@ -1251,18 +1276,31 @@ body.translated-rtl h3 {
 }
 
 .expert-title-en {
-    font-size: 0.95rem;
-    color: #00d4ff;
-    font-weight: 600;
+    font-size: 1rem;
+    color: #0066CC;
+    font-weight: 700;
     letter-spacing: 0.5px;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+/* Override for dark sections */
+.expert-team-section .expert-title-en {
+    color: #00d4ff;
 }
 
 .expert-description {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.75);
-    line-height: 1.6;
+    font-size: 0.9rem;
+    color: #333333;
+    line-height: 1.7;
     margin-top: 0.5rem;
+    font-weight: 400;
+}
+
+/* Override for dark sections */
+.expert-team-section .expert-description {
+    color: rgba(255, 255, 255, 0.85);
 }
 
 /* News & Team Section */
