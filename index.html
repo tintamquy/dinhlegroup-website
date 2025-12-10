@@ -12,6 +12,8 @@
     <meta name="author" content="Dinh Le Group">
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
+    <meta name="theme-color" content="#003366">
+    <meta name="msapplication-TileColor" content="#003366">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -50,13 +52,20 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="LOGO-1-1.png">
     
+    <!-- Performance Optimization -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://translate.google.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    
     <!-- Three.js for 3D Globe -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -518,14 +527,6 @@
                 </div>
 
                 <!-- Education Images -->
-                <div class="gallery-item" data-category="education">
-                    <div class="gallery-image-wrapper">
-                        <img src="hoatdong/giảng dạy 1.jpg" alt="Teaching Activity 1" loading="lazy">
-                        <div class="gallery-overlay">
-                            <span class="gallery-icon">+</span>
-                        </div>
-                    </div>
-                </div>
                 <div class="gallery-item" data-category="education">
                     <div class="gallery-image-wrapper">
                         <img src="hoatdong/giảng dạy 2.jpg" alt="Teaching Activity 2" loading="lazy">
