@@ -456,6 +456,21 @@ img {
     margin: 0 auto;
 }
 
+/* Override section-header colors for dark sections */
+.education-section .section-header h2,
+.expert-team-section .section-header h2 {
+    color: #ffffff;
+    background: linear-gradient(135deg, #ffffff 0%, #00d4ff 50%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+}
+
+.education-section .section-header p,
+.expert-team-section .section-header p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
 /* Gallery Filters */
 .gallery-filters {
     display: flex;
@@ -1232,10 +1247,18 @@ body.translated-rtl h3 {
 }
 
 .expert-title-en {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: #00d4ff;
     font-weight: 600;
     letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+}
+
+.expert-description {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+    margin-top: 0.5rem;
 }
 
 /* News & Team Section */
