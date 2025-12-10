@@ -1298,10 +1298,10 @@ body.translated-rtl h3 {
 
 /* Override for light sections (portfolio) */
 .content-section .expert-info h3 {
-    color: #003366;
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
+    color: #003366 !important;
+    font-size: 1.3rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 0.75rem !important;
 }
 
 .expert-title {
@@ -1320,11 +1320,11 @@ body.translated-rtl h3 {
 
 /* Override for light sections (portfolio) */
 .content-section .expert-title-en {
-    color: #0066CC;
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
+    color: #0066CC !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    margin-bottom: 1rem !important;
 }
 
 .expert-description {
@@ -1337,9 +1337,10 @@ body.translated-rtl h3 {
 
 /* Override for light sections (portfolio) */
 .content-section .expert-description {
-    font-size: 0.9rem;
-    color: #333333;
-    line-height: 1.7;
+    font-size: 0.9rem !important;
+    color: #333333 !important;
+    line-height: 1.7 !important;
+    font-weight: 400 !important;
 }
 
 /* News & Team Section */
