@@ -18,12 +18,14 @@
 }
 
 body {
-    font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Arial', 'Noto Sans', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans SC', 'Noto Sans TC', sans-serif;
     line-height: 1.6;
     color: var(--dark-gray);
     background-color: var(--white);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "kern" 1;
+    text-rendering: optimizeLegibility;
 }
 
 /* Fix font when Google Translate is active */
@@ -31,7 +33,7 @@ body.translated-ltr,
 body.translated-rtl,
 body.translated-ltr *,
 body.translated-rtl * {
-    font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !important;
+    font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Arial', 'Noto Sans', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans SC', 'Noto Sans TC', sans-serif !important;
 }
 
 /* Ensure fonts load properly for all languages */
@@ -39,7 +41,7 @@ body.translated-rtl * {
 .goog-te-menu-frame,
 .goog-te-menu-value,
 .goog-te-menu-value span {
-    font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif !important;
+    font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Arial', 'Noto Sans', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans SC', 'Noto Sans TC', sans-serif !important;
 }
 
 .container {
@@ -222,7 +224,7 @@ body > .skiptranslate {
 }
 
 .hero-title {
-    font-family: 'Orbitron', 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Orbitron', 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Arial', 'Noto Sans', sans-serif;
     font-size: 3.5rem;
     font-weight: 800;
     margin-bottom: 1.5rem;
@@ -441,7 +443,7 @@ img {
 }
 
 .section-header h2 {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Orbitron', 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Arial', 'Noto Sans', sans-serif;
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--primary-blue);
@@ -1233,11 +1235,13 @@ body.translated-rtl h3 {
 }
 
 .expert-info h3 {
-    font-family: 'Orbitron', 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Orbitron', 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Arial', 'Noto Sans', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans SC', 'Noto Sans TC', sans-serif;
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
     color: #ffffff;
     letter-spacing: 1px;
+    font-weight: 600;
+    text-transform: none;
 }
 
 .expert-title {
