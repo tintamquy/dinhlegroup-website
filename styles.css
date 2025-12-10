@@ -523,10 +523,21 @@ img {
     break-inside: avoid;
     margin-bottom: 1.5rem;
     page-break-inside: avoid;
+    position: relative;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
 }
 
-.gallery-item {
-    position: relative;
+.gallery-item:nth-child(1) { animation-delay: 0.05s; }
+.gallery-item:nth-child(2) { animation-delay: 0.1s; }
+.gallery-item:nth-child(3) { animation-delay: 0.15s; }
+.gallery-item:nth-child(4) { animation-delay: 0.2s; }
+.gallery-item:nth-child(5) { animation-delay: 0.25s; }
+.gallery-item:nth-child(6) { animation-delay: 0.3s; }
+.gallery-item:nth-child(7) { animation-delay: 0.35s; }
+.gallery-item:nth-child(8) { animation-delay: 0.4s; }
+.gallery-item:nth-child(9) { animation-delay: 0.45s; }
+.gallery-item:nth-child(10) { animation-delay: 0.5s; }
     overflow: visible;
     border-radius: 12px;
     cursor: pointer;
@@ -1182,16 +1193,31 @@ body.translated-rtl h3 {
 }
 
 .expert-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 248, 255, 0.98) 100%);
-    border: 2px solid rgba(0, 102, 204, 0.2);
+    background: radial-gradient(circle at top, rgba(0, 212, 255, 0.15) 0%, rgba(0, 0, 0, 0.6) 60%);
+    border: 1px solid rgba(0, 212, 255, 0.3);
     border-radius: 16px;
-    padding: 2rem;
+    padding: 1.5rem;
     text-align: center;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 8px 25px rgba(0, 51, 102, 0.15), 0 0 0 0 rgba(0, 102, 204, 0);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 212, 255, 0.15);
     position: relative;
     overflow: hidden;
 }
+
+/* Light background for portfolio section */
+.content-section .expert-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 248, 255, 0.98) 100%);
+    border: 2px solid rgba(0, 102, 204, 0.2);
+    box-shadow: 0 8px 25px rgba(0, 51, 102, 0.15), 0 0 0 0 rgba(0, 102, 204, 0);
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.content-section .expert-card:nth-child(1) { animation-delay: 0.1s; }
+.content-section .expert-card:nth-child(2) { animation-delay: 0.2s; }
+.content-section .expert-card:nth-child(3) { animation-delay: 0.3s; }
+.content-section .expert-card:nth-child(4) { animation-delay: 0.4s; }
 
 .expert-card::before {
     content: '';
@@ -1210,6 +1236,13 @@ body.translated-rtl h3 {
 }
 
 .expert-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 212, 255, 0.25);
+    border-color: rgba(0, 212, 255, 0.5);
+}
+
+/* Light background hover for portfolio */
+.content-section .expert-card:hover {
     transform: translateY(-10px) scale(1.02);
     box-shadow: 0 20px 50px rgba(0, 51, 102, 0.25), 0 0 40px rgba(0, 102, 204, 0.2);
     border-color: rgba(0, 102, 204, 0.5);
@@ -1255,18 +1288,20 @@ body.translated-rtl h3 {
 
 .expert-info h3 {
     font-family: 'Orbitron', 'Rajdhani', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Arial', 'Noto Sans', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans SC', 'Noto Sans TC', sans-serif;
-    font-size: 1.3rem;
-    margin-bottom: 0.75rem;
-    color: #003366;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
     letter-spacing: 1px;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: none;
-    position: relative;
 }
 
-/* Override for dark sections */
-.expert-team-section .expert-info h3 {
-    color: #ffffff;
+/* Override for light sections (portfolio) */
+.content-section .expert-info h3 {
+    color: #003366;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
 }
 
 .expert-title {
@@ -1276,31 +1311,35 @@ body.translated-rtl h3 {
 }
 
 .expert-title-en {
-    font-size: 1rem;
-    color: #0066CC;
-    font-weight: 700;
+    font-size: 0.95rem;
+    color: #00d4ff;
+    font-weight: 600;
     letter-spacing: 0.5px;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
 }
 
-/* Override for dark sections */
-.expert-team-section .expert-title-en {
-    color: #00d4ff;
+/* Override for light sections (portfolio) */
+.content-section .expert-title-en {
+    color: #0066CC;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
 }
 
 .expert-description {
-    font-size: 0.9rem;
-    color: #333333;
-    line-height: 1.7;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
     margin-top: 0.5rem;
     font-weight: 400;
 }
 
-/* Override for dark sections */
-.expert-team-section .expert-description {
-    color: rgba(255, 255, 255, 0.85);
+/* Override for light sections (portfolio) */
+.content-section .expert-description {
+    font-size: 0.9rem;
+    color: #333333;
+    line-height: 1.7;
 }
 
 /* News & Team Section */
@@ -1461,6 +1500,13 @@ body.translated-rtl h3 {
     z-index: 0;
 }
 
+#portfolio-header {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .page-header h1,
 .page-header p {
     position: relative;
@@ -1535,13 +1581,41 @@ body.translated-rtl h3 {
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border-top: 3px solid var(--secondary-blue);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.mission-card:nth-child(1) { animation-delay: 0.1s; }
+.mission-card:nth-child(2) { animation-delay: 0.2s; }
+.mission-card:nth-child(3) { animation-delay: 0.3s; }
+.mission-card:nth-child(4) { animation-delay: 0.4s; }
+.mission-card:nth-child(5) { animation-delay: 0.5s; }
+.mission-card:nth-child(6) { animation-delay: 0.6s; }
+
+.mission-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 102, 204, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.mission-card:hover::before {
+    left: 100%;
 }
 
 .mission-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(0, 102, 204, 0.2);
+    border-top-width: 4px;
 }
 
 .mission-card h3 {
