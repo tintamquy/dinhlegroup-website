@@ -105,7 +105,7 @@ if (contactForm) {
                     email: email,
                     phone: phone,
                     message: `Subject: ${subjectText}\n\nPhone: ${phone}\n\nMessage:\n${message}`,
-                    from_name: 'Dinh Le Group Website',
+                    from_name: 'Dinhle Group Website',
                     to_email: 'caoquy120324@gmail.com'
                 };
 
