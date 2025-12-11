@@ -541,9 +541,22 @@
         .banner-image-section {
             padding: 0;
             margin: 0;
+            width: 100%;
+        }
+
+        .banner-image-wrapper {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
         }
 
         .banner-image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
             transition: transform 0.5s ease;
         }
 
@@ -552,6 +565,14 @@
         }
 
         @media (max-width: 768px) {
+            .banner-image-wrapper {
+                height: 250px;
+            }
+            
+            .banner-image-section img {
+                object-position: center 30%;
+            }
+            
             .harvard-hero {
                 padding: 100px 20px 60px;
                 min-height: 500px;
@@ -590,8 +611,12 @@
                 font-size: 2.5rem;
             }
 
-            .banner-image-section {
-                height: 250px !important;
+            .banner-image-wrapper {
+                height: 250px;
+            }
+            
+            .banner-image-section img {
+                object-position: center 30%;
             }
         }
     </style>
@@ -650,9 +675,9 @@
     </section>
 
     <!-- Banner Image Section -->
-    <section class="banner-image-section" style="padding: 0; margin: 0;">
-        <div style="width: 100%; height: 400px; overflow: hidden;">
-            <img src="tổng hợp ảnh dự án trường/trường dinhle college banner.jpg" alt="Dinh Le College Campus" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    <section class="banner-image-section">
+        <div class="banner-image-wrapper">
+            <img src="tổng hợp ảnh dự án trường/trường dinhle college banner.jpg" alt="Dinh Le College Campus" loading="lazy">
         </div>
     </section>
 
@@ -749,7 +774,7 @@
                     <p>The campus design incorporates modern facilities, green spaces, and interactive learning environments that inspire creativity, critical thinking, and collaboration among students and educators.</p>
                 </div>
                 <div class="overview-image">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai tổng quan dự án.jpg" alt="Dinh Le College Project Overview">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai tổng quan dự án.jpg" alt="Dinh Le College Project Overview" loading="lazy">
                 </div>
             </div>
         </div>
@@ -818,47 +843,47 @@
             </div>
             <div class="gallery-grid-3d">
                 <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai tổng quan dự án.jpg" alt="Project Overview">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai tổng quan dự án.jpg" alt="Project Overview" loading="lazy">
                     <div class="gallery-caption">Project Overview</div>
                 </div>
                 <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai nhà hiệu bộ.jpg" alt="Administrative Building">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai nhà hiệu bộ.jpg" alt="Administrative Building" loading="lazy">
                     <div class="gallery-caption">Administrative Building</div>
                 </div>
                 <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai giảng đường.jpg" alt="Lecture Hall">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai giảng đường.jpg" alt="Lecture Hall" loading="lazy">
                     <div class="gallery-caption">Lecture Hall</div>
                 </div>
                 <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai giảng đường góc 2.jpg" alt="Lecture Hall View 2">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai giảng đường góc 2.jpg" alt="Lecture Hall View 2" loading="lazy">
                     <div class="gallery-caption">Lecture Hall - Alternative View</div>
                 </div>
                 <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai khu nhà.jpg" alt="Residential Area">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai khu nhà.jpg" alt="Residential Area" loading="lazy">
                     <div class="gallery-caption">Residential Area</div>
                 </div>
                 <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai khu nhà 2.jpg" alt="Residential Area 2">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai khu nhà 2.jpg" alt="Residential Area 2" loading="lazy">
                     <div class="gallery-caption">Residential Area - Alternative View</div>
                 </div>
                 <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai hồ.jpg" alt="Lake Area">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai hồ.jpg" alt="Lake Area" loading="lazy">
                     <div class="gallery-caption">Lake & Water Features</div>
                 </div>
                 <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai khuôn viên thể thao.jpg" alt="Sports Complex">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai khuôn viên thể thao.jpg" alt="Sports Complex" loading="lazy">
                     <div class="gallery-caption">Sports Complex</div>
                 </div>
                 <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai cổng 01.jpg" alt="Main Gate 1">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai cổng 01.jpg" alt="Main Gate 1" loading="lazy">
                     <div class="gallery-caption">Main Entrance Gate 1</div>
                 </div>
                 <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai cổng 02.jpg" alt="Main Gate 2">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai cổng 02.jpg" alt="Main Gate 2" loading="lazy">
                     <div class="gallery-caption">Main Entrance Gate 2</div>
                 </div>
                 <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai cổng 04.jpg" alt="Main Gate 4">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai cổng 04.jpg" alt="Main Gate 4" loading="lazy">
                     <div class="gallery-caption">Main Entrance Gate 4</div>
                 </div>
             </div>

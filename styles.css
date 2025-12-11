@@ -112,12 +112,28 @@ body.translated-rtl * {
     font-weight: 500;
     transition: color 0.3s ease;
     padding: 0.5rem 0;
+    position: relative;
+    display: inline-block;
 }
 
-.nav-menu a:hover,
+.nav-menu a:hover {
+    color: var(--light-blue);
+}
+
 .nav-menu a.active {
     color: var(--light-blue);
-    border-bottom: 2px solid var(--light-blue);
+    position: relative;
+}
+
+.nav-menu a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--light-blue);
+    border-radius: 2px;
 }
 
 /* Language Selector */
@@ -2470,6 +2486,15 @@ html[lang="vi"] .content-section .expert-title-en,
         padding: 1rem;
         width: 100%;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-menu a.active::after {
+        display: none;
+    }
+
+    .nav-menu a.active {
+        background: rgba(0, 212, 255, 0.1);
+        border-left: 3px solid var(--light-blue);
     }
 
     .translate-wrap {
