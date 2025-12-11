@@ -1315,7 +1315,16 @@ body.translated-rtl h3 {
     color: #00d4ff;
     font-weight: 600;
     letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.expert-title-vi {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    letter-spacing: 0.3px;
     margin-bottom: 0.75rem;
+    font-style: italic;
 }
 
 /* Override for light sections (portfolio) */
@@ -1324,6 +1333,14 @@ body.translated-rtl h3 {
     font-size: 0.9rem !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.content-section .expert-title-vi {
+    color: #666666 !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    font-style: italic !important;
     margin-bottom: 1rem !important;
 }
 
