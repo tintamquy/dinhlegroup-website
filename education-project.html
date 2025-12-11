@@ -538,6 +538,79 @@
             color: #666;
         }
 
+        /* Learning Approach Section */
+        .learning-approach-section {
+            padding: 100px 20px;
+            background: white;
+        }
+
+        .learning-approach-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .learning-approach-header h2 {
+            font-size: 2.75rem;
+            color: var(--dl-primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .learning-approach-header p {
+            font-size: 1.15rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .learning-approach-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .learning-approach-item {
+            background: var(--dl-light);
+            padding: 3rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--dl-secondary);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .learning-approach-item h3 {
+            font-size: 2rem;
+            color: var(--dl-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .learning-approach-item p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .learning-features-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 2rem;
+        }
+
+        .learning-features-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e0e0e0;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .learning-features-list li:last-child {
+            border-bottom: none;
+        }
+
         .banner-image-section {
             padding: 0;
             margin: 0;
@@ -591,7 +664,8 @@
             .features-header h2,
             .gallery-header h2,
             .testimonials-header h2,
-            .cta-section h2 {
+            .cta-section h2,
+            .learning-approach-header h2 {
                 font-size: 2rem;
             }
             
@@ -617,6 +691,18 @@
             
             .banner-image-section img {
                 object-position: center 30%;
+            }
+
+            .learning-approach-item {
+                padding: 2rem;
+            }
+
+            .learning-approach-item h3 {
+                font-size: 1.75rem;
+            }
+
+            .learning-approach-item p {
+                font-size: 1rem;
             }
         }
     </style>
