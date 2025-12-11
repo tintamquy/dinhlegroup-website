@@ -5,34 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Primary Meta Tags -->
-    <title>Dinh Le College - Multi-Level School & Vocational Training Project | Dinhle Group</title>
-    <meta name="title" content="Dinh Le College - Multi-Level School & Vocational Training Project">
-    <meta name="description" content="Discover Dinh Le College: A modern, comprehensive educational project in Hanoi featuring multi-level schooling, vocational training, and experiential learning. 99,510m² campus with innovative S-shaped history learning space celebrating Vietnam's heritage.">
-    <meta name="keywords" content="Dinh Le College, education project Vietnam, multi-level school Hanoi, vocational training, experiential learning, Vietnam education, school project Hanoi">
+    <title>Dinhle College - Multi-Level School & Vocational Training Project | Dinhle Group</title>
+    <meta name="title" content="Dinhle College - Multi-Level School & Vocational Training Project">
+    <meta name="description" content="Discover Dinhle College: A modern, comprehensive educational project in Hanoi featuring multi-level schooling, vocational training, and experiential learning. 99,510m² campus with innovative S-shaped history learning space celebrating Vietnam's heritage.">
+    <meta name="keywords" content="Dinhle College, education project Vietnam, multi-level school Hanoi, vocational training, experiential learning, Vietnam education, school project Hanoi">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dinhlegroup.vn/education-project.html">
-    <meta property="og:title" content="Dinh Le College - Multi-Level School & Vocational Training Project">
+    <meta property="og:title" content="Dinhle College - Multi-Level School & Vocational Training Project">
     <meta property="og:description" content="A modern, comprehensive educational project in Hanoi featuring multi-level schooling, vocational training, and experiential learning.">
     <meta property="og:image" content="https://dinhlegroup.vn/tổng hợp ảnh dự án trường/trường dinhle college banner.jpg">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Dinh Le College - Multi-Level School & Vocational Training Project">
+    <meta name="twitter:title" content="Dinhle College - Multi-Level School & Vocational Training Project">
     <meta name="twitter:description" content="A modern, comprehensive educational project in Hanoi featuring multi-level schooling, vocational training, and experiential learning.">
     <meta name="twitter:image" content="https://dinhlegroup.vn/tổng hợp ảnh dự án trường/trường dinhle college banner.jpg">
     
     <link rel="canonical" href="https://dinhlegroup.vn/education-project.html">
     <link rel="icon" type="image/png" href="LOGO-1-1.png">
     
+    <!-- Performance Optimization -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://translate.google.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    
     <link rel="stylesheet" href="styles.css">
     <!-- Three.js for 3D Effects -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "Dinhle College",
+      "description": "A modern, comprehensive educational project in Hanoi featuring multi-level schooling, vocational training, and experiential learning. 99,510m² campus with innovative S-shaped history learning space.",
+      "url": "https://dinhlegroup.vn/education-project.html",
+      "logo": "https://dinhlegroup.vn/LOGO-1-1.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Hanoi",
+        "addressRegion": "Hanoi",
+        "addressCountry": "VN",
+        "streetAddress": "Yen Vinh Village, Quang Minh Commune"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Vietnam"
+      },
+      "educationalCredentialAwarded": "Vocational Training Certificate",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Educational Programs",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Course",
+              "name": "Multi-Level Education System"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Course",
+              "name": "Vocational Training Programs"
+            }
+          }
+        ]
+      }
+    }
+    </script>
     <style>
         /* Education Project Styles - Using Dinhle Group Brand Colors */
         :root {
@@ -632,6 +685,23 @@
             display: block;
             transition: transform 0.5s ease;
         }
+        
+        /* Scroll Animation */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
 
         .banner-image-section:hover img {
             transform: scale(1.05);
@@ -712,8 +782,8 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-wrapper">
-                <a href="index.html" class="logo">
-                    <img src="LOGO-1-1.png" alt="Dinhle Group Logo" class="logo-image">
+                <a href="index.html" class="logo" aria-label="Dinhle Group Home">
+                    <img src="LOGO-1-1.png" alt="Dinhle Group Logo" class="logo-image" width="50" height="50" loading="eager" fetchpriority="high">
                     <h1>Dinhle Group</h1>
                 </a>
                 <ul class="nav-menu" id="navMenu">
@@ -750,20 +820,20 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="education-hero">
-        <canvas id="hero-3d-canvas"></canvas>
+    <section class="education-hero" aria-label="Dinhle College Hero Section">
+        <canvas id="hero-3d-canvas" aria-hidden="true"></canvas>
         <div class="container">
             <p class="tagline-top">Taught By Renowned Experts</p>
-            <h1>Explore Dinh Le College</h1>
+            <h1>Explore Dinhle College</h1>
             <p class="subtitle">Learn with Excellence. Lead with Confidence.</p>
-            <p class="tagline">Whether you're navigating change, transforming systems, or launching ideas—Dinh Le College gives you the frameworks and confidence to lead forward. Our modern, comprehensive educational environment combines academic excellence with character building, preparing students for success in both their careers and personal lives.</p>
+            <p class="tagline">Whether you're navigating change, transforming systems, or launching ideas—Dinhle College gives you the frameworks and confidence to lead forward. Our modern, comprehensive educational environment combines academic excellence with character building, preparing students for success in both their careers and personal lives.</p>
         </div>
     </section>
 
     <!-- Banner Image Section -->
-    <section class="banner-image-section">
+    <section class="banner-image-section" aria-label="Dinhle College Campus Banner">
         <div class="banner-image-wrapper">
-            <img src="tổng hợp ảnh dự án trường/trường dinhle college banner.jpg" alt="Dinh Le College Campus" loading="lazy">
+            <img src="tổng hợp ảnh dự án trường/trường dinhle college banner.jpg" alt="Dinhle College Campus - Modern educational facility in Hanoi" loading="eager" fetchpriority="high" width="1920" height="400">
         </div>
     </section>
 
@@ -860,7 +930,7 @@
                     <p>The campus design incorporates modern facilities, green spaces, and interactive learning environments that inspire creativity, critical thinking, and collaboration among students and educators.</p>
                 </div>
                 <div class="overview-image">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai tổng quan dự án.jpg" alt="Dinh Le College Project Overview" loading="lazy">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai tổng quan dự án.jpg" alt="Dinhle College Project Overview - 3D visualization of the comprehensive educational campus" loading="lazy" width="800" height="600">
                 </div>
             </div>
         </div>
@@ -871,7 +941,7 @@
         <div class="features-container">
             <div class="features-header">
                 <h2>Key Features & Benefits</h2>
-                <p>What makes Dinh Le College unique</p>
+                <p>What makes Dinhle College unique</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
@@ -913,7 +983,7 @@
         <div class="container">
             <div class="history-content">
                 <h2>The S-Shaped History Learning Space</h2>
-                <p>A distinctive feature of Dinh Le College is the history learning area designed in the shape of the letter "S" – a sacred symbol representing the land of Vietnam. This innovative space combines water features, hills, trees, and landscape highlights, creating an area that is both aesthetically rich and culturally profound.</p>
+                <p>A distinctive feature of Dinhle College is the history learning area designed in the shape of the letter "S" – a sacred symbol representing the land of Vietnam. This innovative space combines water features, hills, trees, and landscape highlights, creating an area that is both aesthetically rich and culturally profound.</p>
                 <p>Each position along the S-shaped path is planned as a "learning station" where students explore the milestones of Vietnamese history. These stations teach lessons about patriotism, unity, resilience, and Vietnamese identity across different historical periods.</p>
                 <p>This space not only helps students learn in a vivid, visual way but also ignites national pride, cultivates a decent lifestyle, responsibility, and an appreciation for preserving traditional Vietnamese values. The interactive design encourages exploration and discovery, making history come alive for students of all ages.</p>
             </div>
@@ -927,49 +997,49 @@
                 <h2>3D Project Visualization</h2>
                 <p>Explore our future campus through these detailed 3D visualizations</p>
             </div>
-            <div class="gallery-grid-3d">
-                <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai tổng quan dự án.jpg" alt="Project Overview" loading="lazy">
+            <div class="gallery-grid-3d" role="list" aria-label="3D Project Visualization Gallery">
+                <div class="gallery-item-3d" role="listitem">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai tổng quan dự án.jpg" alt="Dinhle College Project Overview - Complete campus visualization" loading="lazy" width="600" height="400">
                     <div class="gallery-caption">Project Overview</div>
                 </div>
-                <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai nhà hiệu bộ.jpg" alt="Administrative Building" loading="lazy">
+                <div class="gallery-item-3d" role="listitem">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai nhà hiệu bộ.jpg" alt="Dinhle College Administrative Building - Modern administrative facilities" loading="lazy" width="600" height="400">
                     <div class="gallery-caption">Administrative Building</div>
                 </div>
-                <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai giảng đường.jpg" alt="Lecture Hall" loading="lazy">
+                <div class="gallery-item-3d" role="listitem">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai giảng đường.jpg" alt="Dinhle College Lecture Hall - Spacious learning environment" loading="lazy" width="600" height="400">
                     <div class="gallery-caption">Lecture Hall</div>
                 </div>
-                <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai giảng đường góc 2.jpg" alt="Lecture Hall View 2" loading="lazy">
+                <div class="gallery-item-3d" role="listitem">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai giảng đường góc 2.jpg" alt="Dinhle College Lecture Hall Alternative View" loading="lazy" width="600" height="400">
                     <div class="gallery-caption">Lecture Hall - Alternative View</div>
                 </div>
-                <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai khu nhà.jpg" alt="Residential Area" loading="lazy">
+                <div class="gallery-item-3d" role="listitem">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai khu nhà.jpg" alt="Dinhle College Residential Area - Student accommodation facilities" loading="lazy" width="600" height="400">
                     <div class="gallery-caption">Residential Area</div>
                 </div>
-                <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai khu nhà 2.jpg" alt="Residential Area 2" loading="lazy">
+                <div class="gallery-item-3d" role="listitem">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai khu nhà 2.jpg" alt="Dinhle College Residential Area Alternative View" loading="lazy" width="600" height="400">
                     <div class="gallery-caption">Residential Area - Alternative View</div>
                 </div>
-                <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai hồ.jpg" alt="Lake Area" loading="lazy">
+                <div class="gallery-item-3d" role="listitem">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai hồ.jpg" alt="Dinhle College Lake and Water Features - Beautiful landscape design" loading="lazy" width="600" height="400">
                     <div class="gallery-caption">Lake & Water Features</div>
                 </div>
-                <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai khuôn viên thể thao.jpg" alt="Sports Complex" loading="lazy">
+                <div class="gallery-item-3d" role="listitem">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai khuôn viên thể thao.jpg" alt="Dinhle College Sports Complex - Modern sports facilities" loading="lazy" width="600" height="400">
                     <div class="gallery-caption">Sports Complex</div>
                 </div>
-                <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai cổng 01.jpg" alt="Main Gate 1" loading="lazy">
+                <div class="gallery-item-3d" role="listitem">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai cổng 01.jpg" alt="Dinhle College Main Entrance Gate 1 - Impressive campus entrance" loading="lazy" width="600" height="400">
                     <div class="gallery-caption">Main Entrance Gate 1</div>
                 </div>
-                <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai cổng 02.jpg" alt="Main Gate 2" loading="lazy">
+                <div class="gallery-item-3d" role="listitem">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai cổng 02.jpg" alt="Dinhle College Main Entrance Gate 2" loading="lazy" width="600" height="400">
                     <div class="gallery-caption">Main Entrance Gate 2</div>
                 </div>
-                <div class="gallery-item-3d">
-                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai cổng 04.jpg" alt="Main Gate 4" loading="lazy">
+                <div class="gallery-item-3d" role="listitem">
+                    <img src="tổng hợp ảnh dự án trường/hình ảnh 3d dự án đang triển khai cổng 04.jpg" alt="Dinhle College Main Entrance Gate 4" loading="lazy" width="600" height="400">
                     <div class="gallery-caption">Main Entrance Gate 4</div>
                 </div>
             </div>
@@ -984,7 +1054,7 @@
             </div>
             <div class="testimonials-grid">
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"Dinh Le College represents a transformative approach to education in Vietnam. The combination of academic excellence, character development, and cultural heritage creates a unique learning environment that prepares students for success."</p>
+                    <p class="testimonial-text">"Dinhle College represents a transformative approach to education in Vietnam. The combination of academic excellence, character development, and cultural heritage creates a unique learning environment that prepares students for success."</p>
                     <p class="testimonial-author">Prof. Dr. Nguyen Hung Hau</p>
                     <p class="testimonial-role">Former Director, Institute of Philosophy, Ho Chi Minh National Academy of Politics</p>
                 </div>
@@ -994,7 +1064,7 @@
                     <p class="testimonial-role">Permanent Member, Vietnam Philosophy Association</p>
                 </div>
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"The comprehensive approach to education at Dinh Le College, combining multi-level schooling with vocational training, addresses the real needs of students and prepares them for meaningful careers."</p>
+                    <p class="testimonial-text">"The comprehensive approach to education at Dinhle College, combining multi-level schooling with vocational training, addresses the real needs of students and prepares them for meaningful careers."</p>
                     <p class="testimonial-author">Tran Dinh Hung</p>
                     <p class="testimonial-role">Senior Expert in Business Administration</p>
                 </div>
@@ -1006,7 +1076,7 @@
     <section class="benefits-section" style="padding: 100px 20px; background: var(--dl-light);">
         <div class="container" style="max-width: 1200px; margin: 0 auto;">
             <div style="text-align: center; margin-bottom: 4rem;">
-                <h2 style="font-size: 2.75rem; color: var(--dl-primary); margin-bottom: 1rem; font-weight: 700; letter-spacing: -1px;">Why Choose Dinh Le College</h2>
+                <h2 style="font-size: 2.75rem; color: var(--dl-primary); margin-bottom: 1rem; font-weight: 700; letter-spacing: -1px;">Why Choose Dinhle College</h2>
                 <p style="font-size: 1.15rem; color: #666;">Comprehensive benefits for students, parents, and educators</p>
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem;">
@@ -1082,7 +1152,7 @@
     <section class="cta-section">
         <div class="container">
             <h2>Join Our Educational Journey</h2>
-            <p>Discover how Dinh Le College is shaping the future of education in Vietnam through innovative learning spaces, comprehensive programs, and a commitment to excellence. Whether you're a student, parent, or educator, we invite you to be part of this transformative educational experience.</p>
+            <p>Discover how Dinhle College is shaping the future of education in Vietnam through innovative learning spaces, comprehensive programs, and a commitment to excellence. Whether you're a student, parent, or educator, we invite you to be part of this transformative educational experience.</p>
             <a href="contact.html" class="btn btn-primary" style="display: inline-block; margin-top: 1rem; background: white; color: var(--dl-primary);">Contact Us</a>
         </div>
     </section>
@@ -1121,6 +1191,41 @@
     </footer>
 
     <script src="script.js"></script>
+    
+    <!-- Scroll Animation Script -->
+    <script>
+        // Intersection Observer for fade-in animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe sections for animation
+            const sections = document.querySelectorAll('.programs-section, .features-section, .overview-section, .history-learning, .testimonials-section, .learning-approach-section');
+            sections.forEach(section => {
+                section.classList.add('fade-in-up');
+                observer.observe(section);
+            });
+            
+            // Observe cards for staggered animation
+            const cards = document.querySelectorAll('.program-card, .feature-card, .testimonial-card');
+            cards.forEach((card, index) => {
+                card.classList.add('fade-in-up');
+                card.style.transitionDelay = (index * 0.1) + 's';
+                observer.observe(card);
+            });
+        });
+    </script>
     
     <!-- Three.js 3D Hero Background -->
     <script>
