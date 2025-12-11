@@ -538,17 +538,11 @@ img {
 .gallery-item:nth-child(8) { animation-delay: 0.4s; }
 .gallery-item:nth-child(9) { animation-delay: 0.45s; }
 .gallery-item:nth-child(10) { animation-delay: 0.5s; }
+
+.gallery-item {
     overflow: visible;
     border-radius: 12px;
     cursor: pointer;
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    background: #ffffff;
-    display: block;
-    width: 100%;
-    height: auto;
 }
 
 .gallery-item::before {
@@ -1325,6 +1319,23 @@ body.translated-rtl h3 {
     letter-spacing: 0.3px;
     margin-bottom: 0.75rem;
     font-style: italic;
+    display: none; /* Hidden by default - only show when Vietnamese is selected */
+}
+
+/* Show Vietnamese title only when language is Vietnamese */
+body:lang(vi) .expert-title-vi,
+html[lang="vi"] .expert-title-vi,
+.translated-ltr:lang(vi) .expert-title-vi,
+.translated-rtl:lang(vi) .expert-title-vi {
+    display: block;
+}
+
+/* Hide English title when Vietnamese is selected */
+body:lang(vi) .expert-title-en,
+html[lang="vi"] .expert-title-en,
+.translated-ltr:lang(vi) .expert-title-en,
+.translated-rtl:lang(vi) .expert-title-en {
+    display: none;
 }
 
 /* Override for light sections (portfolio) */
@@ -1342,6 +1353,23 @@ body.translated-rtl h3 {
     font-weight: 500 !important;
     font-style: italic !important;
     margin-bottom: 1rem !important;
+    display: none; /* Hidden by default */
+}
+
+/* Show Vietnamese title in light sections when Vietnamese is selected */
+body:lang(vi) .content-section .expert-title-vi,
+html[lang="vi"] .content-section .expert-title-vi,
+.translated-ltr:lang(vi) .content-section .expert-title-vi,
+.translated-rtl:lang(vi) .content-section .expert-title-vi {
+    display: block !important;
+}
+
+/* Hide English title in light sections when Vietnamese is selected */
+body:lang(vi) .content-section .expert-title-en,
+html[lang="vi"] .content-section .expert-title-en,
+.translated-ltr:lang(vi) .content-section .expert-title-en,
+.translated-rtl:lang(vi) .content-section .expert-title-en {
+    display: none !important;
 }
 
 .expert-description {

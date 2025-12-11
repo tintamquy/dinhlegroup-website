@@ -31,6 +31,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <!-- Three.js for 3D Effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
     <style>
         /* Harvard Online Inspired Styles - Using Dinh Le Group Brand Colors */
         :root {
@@ -48,23 +50,25 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        .harvard-hero::before {
-            content: '';
+        .harvard-hero #hero-3d-canvas {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('tổng hợp ảnh dự án trường/trường dinhle college banner.jpg') center/cover;
-            opacity: 0.25;
+            width: 100%;
+            height: 100%;
             z-index: 0;
+            opacity: 0.4;
         }
         
         .harvard-hero .container {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             max-width: 900px;
         }
         
@@ -534,9 +538,23 @@
             color: #666;
         }
 
+        .banner-image-section {
+            padding: 0;
+            margin: 0;
+        }
+
+        .banner-image-section img {
+            transition: transform 0.5s ease;
+        }
+
+        .banner-image-section:hover img {
+            transform: scale(1.05);
+        }
+
         @media (max-width: 768px) {
             .harvard-hero {
                 padding: 100px 20px 60px;
+                min-height: 500px;
             }
 
             .harvard-hero h1 {
@@ -570,6 +588,10 @@
 
             .stat-item h3 {
                 font-size: 2.5rem;
+            }
+
+            .banner-image-section {
+                height: 250px !important;
             }
         }
     </style>
@@ -618,11 +640,19 @@
 
     <!-- Hero Section -->
     <section class="harvard-hero">
+        <canvas id="hero-3d-canvas"></canvas>
         <div class="container">
             <p class="tagline-top">Taught By Renowned Experts</p>
             <h1>Explore Dinh Le College</h1>
             <p class="subtitle">Learn with Excellence. Lead with Confidence.</p>
             <p class="tagline">Whether you're navigating change, transforming systems, or launching ideas—Dinh Le College gives you the frameworks and confidence to lead forward. Our modern, comprehensive educational environment combines academic excellence with character building, preparing students for success in both their careers and personal lives.</p>
+        </div>
+    </section>
+
+    <!-- Banner Image Section -->
+    <section class="banner-image-section" style="padding: 0; margin: 0;">
+        <div style="width: 100%; height: 400px; overflow: hidden;">
+            <img src="tổng hợp ảnh dự án trường/trường dinhle college banner.jpg" alt="Dinh Le College Campus" style="width: 100%; height: 100%; object-fit: cover; display: block;">
         </div>
     </section>
 
@@ -861,6 +891,82 @@
         </div>
     </section>
 
+    <!-- Benefits Section - Like Harvard's "Don't Miss What's Next" -->
+    <section class="benefits-section" style="padding: 100px 20px; background: var(--dl-light);">
+        <div class="container" style="max-width: 1200px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <h2 style="font-size: 2.75rem; color: var(--dl-primary); margin-bottom: 1rem; font-weight: 700; letter-spacing: -1px;">Why Choose Dinh Le College</h2>
+                <p style="font-size: 1.15rem; color: #666;">Comprehensive benefits for students, parents, and educators</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem;">
+                <div style="background: white; padding: 2.5rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+                    <div style="font-size: 2.5rem; margin-bottom: 1.5rem;">🎯</div>
+                    <h3 style="font-size: 1.5rem; color: var(--dl-primary); margin-bottom: 1rem; font-weight: 600;">Comprehensive Education</h3>
+                    <p style="color: #666; line-height: 1.7;">Multi-level educational system from primary to vocational training, ensuring seamless learning pathways and continuous development.</p>
+                </div>
+                <div style="background: white; padding: 2.5rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+                    <div style="font-size: 2.5rem; margin-bottom: 1.5rem;">💼</div>
+                    <h3 style="font-size: 1.5rem; color: var(--dl-primary); margin-bottom: 1rem; font-weight: 600;">Career Preparation</h3>
+                    <p style="color: #666; line-height: 1.7;">Industry-focused vocational training programs designed to prepare students for successful careers with practical, real-world skills.</p>
+                </div>
+                <div style="background: white; padding: 2.5rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+                    <div style="font-size: 2.5rem; margin-bottom: 1.5rem;">🌟</div>
+                    <h3 style="font-size: 1.5rem; color: var(--dl-primary); margin-bottom: 1rem; font-weight: 600;">Character Development</h3>
+                    <p style="color: #666; line-height: 1.7;">Integrated moral education and character building programs that cultivate values, ethics, and responsible citizenship.</p>
+                </div>
+                <div style="background: white; padding: 2.5rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+                    <div style="font-size: 2.5rem; margin-bottom: 1.5rem;">🏛️</div>
+                    <h3 style="font-size: 1.5rem; color: var(--dl-primary); margin-bottom: 1rem; font-weight: 600;">Cultural Heritage</h3>
+                    <p style="color: #666; line-height: 1.7;">Unique S-shaped history learning space celebrating Vietnam's rich cultural heritage and instilling national pride.</p>
+                </div>
+                <div style="background: white; padding: 2.5rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+                    <div style="font-size: 2.5rem; margin-bottom: 1.5rem;">🌳</div>
+                    <h3 style="font-size: 1.5rem; color: var(--dl-primary); margin-bottom: 1rem; font-weight: 600;">Modern Facilities</h3>
+                    <p style="color: #666; line-height: 1.7;">State-of-the-art campus with modern facilities, green spaces, and inspiring learning environments designed for optimal education.</p>
+                </div>
+                <div style="background: white; padding: 2.5rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+                    <div style="font-size: 2.5rem; margin-bottom: 1.5rem;">🤝</div>
+                    <h3 style="font-size: 1.5rem; color: var(--dl-primary); margin-bottom: 1rem; font-weight: 600;">Expert Guidance</h3>
+                    <p style="color: #666; line-height: 1.7;">Learn from renowned experts and distinguished professors with decades of academic excellence and professional experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Approach Section -->
+    <section style="padding: 100px 20px; background: white;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <h2 style="font-size: 2.75rem; color: var(--dl-primary); margin-bottom: 1rem; font-weight: 700; letter-spacing: -1px;">Our Learning Approach</h2>
+                <p style="font-size: 1.15rem; color: #666; max-width: 800px; margin: 0 auto;">A holistic approach to education that combines academic excellence with character development</p>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div>
+                    <h3 style="font-size: 2rem; color: var(--dl-primary); margin-bottom: 1.5rem; font-weight: 600;">Experiential Learning</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 1.5rem;">Our hands-on learning approach allows students to explore, discover, and learn through direct engagement with educational content. Students participate in real-world projects, interactive workshops, and collaborative activities that make learning meaningful and memorable.</p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 1.5rem;">Through experiential learning, students develop critical thinking skills, problem-solving abilities, and creativity while gaining practical knowledge that can be immediately applied in their studies and future careers.</p>
+                    <ul style="list-style: none; padding: 0; margin-top: 2rem;">
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid #e0e0e0; color: #333;">✓ Project-based learning activities</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid #e0e0e0; color: #333;">✓ Interactive workshops and seminars</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid #e0e0e0; color: #333;">✓ Collaborative group projects</li>
+                        <li style="padding: 0.75rem 0; color: #333;">✓ Real-world case studies and applications</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="font-size: 2rem; color: var(--dl-primary); margin-bottom: 1.5rem; font-weight: 600;">Character & Values Education</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 1.5rem;">Our "Living Values Learning Space" integrates moral education and character development into every aspect of the curriculum. Students learn not only academic subjects but also essential values such as integrity, responsibility, respect, and national pride.</p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 1.5rem;">The S-shaped history learning space serves as a powerful tool for instilling Vietnamese cultural values and historical awareness, helping students develop a strong sense of identity and connection to their heritage.</p>
+                    <ul style="list-style: none; padding: 0; margin-top: 2rem;">
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid #e0e0e0; color: #333;">✓ Moral education integrated into curriculum</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid #e0e0e0; color: #333;">✓ Cultural heritage learning experiences</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid #e0e0e0; color: #333;">✓ Community service and social responsibility</li>
+                        <li style="padding: 0.75rem 0; color: #333;">✓ Leadership and character development programs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Call to Action -->
     <section class="cta-section">
         <div class="container">
@@ -904,6 +1010,155 @@
     </footer>
 
     <script src="script.js"></script>
+    
+    <!-- Three.js 3D Hero Background -->
+    <script>
+        window.addEventListener('load', function() {
+            if (typeof THREE === 'undefined') {
+                console.log('Three.js not loaded');
+                return;
+            }
+            
+            const canvas = document.getElementById('hero-3d-canvas');
+            if (!canvas) return;
+            
+            const container = canvas.parentElement;
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            
+            // Scene setup
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            
+            // Create floating geometric shapes
+            const shapes = [];
+            const shapeCount = 15;
+            
+            for (let i = 0; i < shapeCount; i++) {
+                let geometry, material, mesh;
+                
+                // Random shape type
+                const shapeType = Math.random();
+                if (shapeType < 0.33) {
+                    geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+                } else if (shapeType < 0.66) {
+                    geometry = new THREE.TetrahedronGeometry(0.4);
+                } else {
+                    geometry = new THREE.OctahedronGeometry(0.4);
+                }
+                
+                material = new THREE.MeshStandardMaterial({
+                    color: new THREE.Color().setHSL(0.55, 0.7, 0.5 + Math.random() * 0.3),
+                    metalness: 0.3,
+                    roughness: 0.4,
+                    transparent: true,
+                    opacity: 0.6
+                });
+                
+                mesh = new THREE.Mesh(geometry, material);
+                mesh.position.set(
+                    (Math.random() - 0.5) * 20,
+                    (Math.random() - 0.5) * 15,
+                    (Math.random() - 0.5) * 20
+                );
+                mesh.rotation.set(
+                    Math.random() * Math.PI,
+                    Math.random() * Math.PI,
+                    Math.random() * Math.PI
+                );
+                
+                shapes.push({
+                    mesh: mesh,
+                    speed: {
+                        x: (Math.random() - 0.5) * 0.01,
+                        y: (Math.random() - 0.5) * 0.01,
+                        z: (Math.random() - 0.5) * 0.01
+                    },
+                    rotation: {
+                        x: (Math.random() - 0.5) * 0.02,
+                        y: (Math.random() - 0.5) * 0.02,
+                        z: (Math.random() - 0.5) * 0.02
+                    }
+                });
+                
+                scene.add(mesh);
+            }
+            
+            // Add ambient light
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+            
+            // Add directional lights
+            const light1 = new THREE.DirectionalLight(0x00d4ff, 0.8);
+            light1.position.set(5, 5, 5);
+            scene.add(light1);
+            
+            const light2 = new THREE.DirectionalLight(0x0066CC, 0.6);
+            light2.position.set(-5, -5, -5);
+            scene.add(light2);
+            
+            // Add point lights for depth
+            const pointLight1 = new THREE.PointLight(0x00d4ff, 0.5, 10);
+            pointLight1.position.set(3, 3, 3);
+            scene.add(pointLight1);
+            
+            const pointLight2 = new THREE.PointLight(0x0066CC, 0.5, 10);
+            pointLight2.position.set(-3, -3, -3);
+            scene.add(pointLight2);
+            
+            // Camera position
+            camera.position.z = 10;
+            camera.position.y = 2;
+            camera.position.x = 0;
+            
+            let time = 0;
+            
+            // Animation
+            function animate() {
+                requestAnimationFrame(animate);
+                time += 0.01;
+                
+                // Animate shapes
+                shapes.forEach((shape, index) => {
+                    shape.mesh.position.x += shape.speed.x;
+                    shape.mesh.position.y += shape.speed.y + Math.sin(time + index) * 0.002;
+                    shape.mesh.position.z += shape.speed.z;
+                    
+                    shape.mesh.rotation.x += shape.rotation.x;
+                    shape.mesh.rotation.y += shape.rotation.y;
+                    shape.mesh.rotation.z += shape.rotation.z;
+                    
+                    // Bounce back if out of bounds
+                    if (Math.abs(shape.mesh.position.x) > 12) shape.speed.x *= -1;
+                    if (Math.abs(shape.mesh.position.y) > 10) shape.speed.y *= -1;
+                    if (Math.abs(shape.mesh.position.z) > 12) shape.speed.z *= -1;
+                });
+                
+                // Rotate camera slightly
+                camera.position.x = Math.sin(time * 0.3) * 2;
+                camera.position.y = 2 + Math.cos(time * 0.2) * 1;
+                camera.lookAt(0, 0, 0);
+                
+                renderer.render(scene, camera);
+            }
+            
+            // Handle resize
+            function handleResize() {
+                const newWidth = container.clientWidth;
+                const newHeight = container.clientHeight;
+                camera.aspect = newWidth / newHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(newWidth, newHeight);
+            }
+            
+            window.addEventListener('resize', handleResize);
+            animate();
+        });
+    </script>
+    
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
