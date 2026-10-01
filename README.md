@@ -71,7 +71,7 @@ DinhLeGroup-Website/
 ## 📞 Contact Information
 
 **DLH R&D LLC**
-- Address: 18917 99th CT NE, Unit A, Bothell, WA 98011
+- Address: 4517 University Way NE, Seattle, WA 98105-4510
 - Phone: +1-425-496-9307
 - Business Type: Real Estate Services, Study Abroad Consulting
 
