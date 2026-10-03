@@ -3220,3 +3220,19 @@ html[lang="vi"] .content-section .expert-title-en,
     }
 }
 
+/* ==========================================================================
+   Temporary Access Password Gate (Password: adidaphat)
+   ========================================================================== */
+html.dlg-auth-locked,
+html.dlg-auth-locked body {
+    overflow: hidden !important;
+    height: 100% !important;
+}
+html.dlg-auth-locked body > *:not(#dlg-auth-gate) {
+    filter: blur(16px) !important;
+    opacity: 0.15 !important;
+    pointer-events: none !important;
+    user-select: none !important;
+}
+
+
