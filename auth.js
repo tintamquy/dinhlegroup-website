@@ -328,11 +328,11 @@
                 
                 <div class="dlg-badge">
                     <span class="dlg-badge-dot"></span>
-                    <span>Quyền Truy Cập Nội Bộ</span>
+                    <span>Restricted Access &bull; Internal Preview</span>
                 </div>
                 
                 <h1 class="dlg-title">DINH LE GROUP</h1>
-                <p class="dlg-subtitle">Hệ thống đang trong giai đoạn cập nhật riêng tư. Vui lòng nhập mật khẩu để tiếp tục.</p>
+                <p class="dlg-subtitle">This system is currently under private review. Please enter your access password to continue.</p>
                 
                 <form class="dlg-form" id="dlg-auth-form" onsubmit="return false;">
                     <div class="dlg-input-box">
@@ -347,13 +347,13 @@
                             type="password" 
                             id="dlg-auth-input" 
                             class="dlg-input" 
-                            placeholder="Nhập mật khẩu..." 
+                            placeholder="Enter access password..." 
                             autocomplete="current-password"
                             spellcheck="false"
                             autofocus
                         >
                         
-                        <button type="button" class="dlg-toggle-eye" id="dlg-toggle-eye" title="Hiện/Ẩn mật khẩu" aria-label="Toggle password visibility">
+                        <button type="button" class="dlg-toggle-eye" id="dlg-toggle-eye" title="Show/Hide password" aria-label="Toggle password visibility">
                             <svg id="dlg-eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                 <circle cx="12" cy="12" r="3"></circle>
@@ -364,7 +364,7 @@
                     <div class="dlg-msg" id="dlg-auth-msg"></div>
                     
                     <button type="submit" class="dlg-btn" id="dlg-auth-submit">
-                        <span>Xác Nhận Truy Cập</span>
+                        <span>Enter System</span>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="9 18 15 12 9 6"></polyline>
                         </svg>
@@ -411,17 +411,17 @@
             const entered = (input.value || '').trim().toLowerCase();
             
             if (!entered) {
-                showMsg('Vui lòng nhập mật khẩu truy cập.', 'error');
+                showMsg('Please enter the access password.', 'error');
                 triggerShake();
                 return;
             }
 
             if (entered === VALID_PASS) {
                 // Success
-                showMsg('Mật khẩu chính xác! Đang mở hệ thống...', 'success');
+                showMsg('Access granted! Unlocking system...', 'success');
                 submitBtn.classList.add('dlg-success');
                 submitBtn.innerHTML = `
-                    <span>Đã Mở Khóa</span>
+                    <span>Access Granted</span>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
@@ -447,7 +447,7 @@
 
             } else {
                 // Incorrect
-                showMsg('Mật khẩu không chính xác. Vui lòng thử lại!', 'error');
+                showMsg('Incorrect password. Please try again.', 'error');
                 triggerShake();
                 input.value = '';
                 input.focus();
